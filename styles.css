@@ -1,0 +1,63 @@
+.default-toast {
+  width: 200px;
+  padding: 10px;
+  background-color: #e6faff;
+  border-radius: 4px;
+  text-align: center;
+  z-index: 1;
+  border: 1px solid #66e0ff;
+}
+
+.top-left {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
+
+.top-right {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+
+.top-center {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.mid-left {
+  position: fixed;
+  left: 10px;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.mid-right {
+  position: fixed;
+  right: 10px;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.bot-left {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+}
+
+.bot-center {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.bot-right {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}

@@ -1,3 +1,4 @@
 "use strict";
 
-const note = new Note();
+const noteGen = new NoteGen();
+const note = noteGen.makeToast("hi");
