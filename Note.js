@@ -22,49 +22,49 @@ NoteGen.prototype.makeToast = function (text) {
   return newNote;
 };
 
-function Note(note) {
-  this.note = note;
+function Note(content) {
+  this.content = content;
   this.position = "";
 }
 
 Note.prototype.display = function (position = "mid-left", element = "") {
-  const note = this.note;
+  const content = this.content;
   if (element === "") {
     switch (position) {
       case "top-left":
-        note.addClass("top-left");
+        content.addClass("top-left");
         this.position = "top-left";
         break;
       case "top-right":
-        note.addClass("top-right");
+        content.addClass("top-right");
         this.position = "top-right";
         break;
       case "top-center":
-        note.addClass("top-center");
+        content.addClass("top-center");
         this.position = "top-center";
         break;
       case "bot-left":
-        note.addClass("bot-left");
+        content.addClass("bot-left");
         this.position = "bot-left";
         break;
       case "bot-right":
-        note.addClass("bot-right");
+        content.addClass("bot-right");
         this.position = "bot-right";
         break;
       case "bot-center":
-        note.addClass("bot-center");
+        content.addClass("bot-center");
         this.position = "bot-center";
         break;
       case "mid-left":
-        note.addClass("mid-left");
+        content.addClass("mid-left");
         this.position = "mid-left";
         break;
       case "mid-right":
-        note.addClass("mid-right");
+        content.addClass("mid-right");
         this.position = "mid-right";
         break;
     }
-    $("body").append(note);
+    $("body").append(content);
   } else {
     /* attach to target element */
 
@@ -78,17 +78,17 @@ Note.prototype.display = function (position = "mid-left", element = "") {
     // const padding_bottom = parseInt(element.css("padding-bottom"));
     // const border_top = parseInt(element.css("border-top-width"));
     // const border_bottom = parseInt(element.css("border-bottom-width"));
-
     element
       .wrap("<div class='wrapper'></div>")
       .parent()
       .css("width", elementWidth)
       .css("height", elementHeight);
-    element.after(note);
-    note.addClass("attached");
+    element.after(content);
 
-    const noteWidth = note.outerWidth();
-    const noteHeight = note.outerHeight();
+    content.addClass("attached");
+
+    const contentWidth = content.outerWidth();
+    const contentHeight = content.outerHeight();
 
     switch (position) {
       case "top-left":
@@ -98,9 +98,9 @@ Note.prototype.display = function (position = "mid-left", element = "") {
         // TODO
         break;
       case "top-center":
-        note
-          .css("left", (elementWidth - noteWidth) / 2)
-          .css("top", -noteHeight - 10); // 10px between target and note
+        content
+          .css("left", (elementWidth - contentWidth) / 2)
+          .css("top", -contentHeight - 10); // 10px between target and content
         this.position = "elem-top-center";
         break;
       case "bot-left":
@@ -110,34 +110,34 @@ Note.prototype.display = function (position = "mid-left", element = "") {
         // TODO
         break;
       case "bot-center":
-        note
+        content
           .css("top", elementHeight + 10)
-          .css("left", (elementWidth - noteWidth) / 2); // 10px between target and note
+          .css("left", (elementWidth - contentWidth) / 2); // 10px between target and content
         this.position = "elem-bot-center";
         break;
       case "mid-left":
-        note
-          .css("top", (elementHeight - noteHeight) / 2)
-          .css("left", -noteWidth - 10); // 10px between target and note
+        content
+          .css("top", (elementHeight - contentHeight) / 2)
+          .css("left", -contentWidth - 10); // 10px between target and content
         this.position = "elem-mid-left";
         break;
       case "mid-right":
-        note
-          .css("top", (elementHeight - noteHeight) / 2)
-          .css("left", elementWidth + 10); // 10px between target and note
+        content
+          .css("top", (elementHeight - contentHeight) / 2)
+          .css("left", elementWidth + 10); // 10px between target and content
         this.position = "elem-mid-right";
         break;
     }
   }
   // fade in and fade out
-  note.fadeIn(function () {
-    note.delay(3000).fadeOut(function () {
+  content.fadeIn(function () {
+    content.delay(3000).fadeOut(function () {
       if (element === "") {
-        note.removeClass(note.position);
-        this.position = "";
+        content.removeClass(position);
       } else {
-        note.removeClass("attached");
-        this.position = "";
+        element.unwrap();
+        content.removeClass("attached");
+        content.css("top", "").css("left", "");
       }
     });
   });

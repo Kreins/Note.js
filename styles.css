@@ -17,6 +17,7 @@
   border: 1px solid #66e0ff;
 }
 
+/* ----- GLOBAL POSITIONS -------- */
 .top-left {
   position: fixed;
   top: 10px;
@@ -71,13 +72,15 @@
   right: 10px;
 }
 
-.attached {
-  position: absolute;
-  z-index: 1;
-  display: inline;
-}
+/* ------- ATTACH TO ELEMENT POSITIONS --------*/
 
 .wrapper {
   position: relative;
   display: inline-block;
+}
+
+.attached {
+  position: absolute;
+  z-index: 1;
+  display: inline;
 }
