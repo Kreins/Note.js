@@ -1,34 +1,62 @@
 "use strict";
 
-function NoteGen() {
-  this.notes = [];
-}
+let notes = [];
+let notes_on_display = [];
+// function NoteGen() {
+//   this.notes = [];
+//   this.notes_on_display = [];
+// }
 
-NoteGen.makeNote = function (note) {
-  const newNote = new Note(note);
-  this.notes.push(newNote);
-  return newNote;
+// NoteGen.makeNote = function (note) {
+//   const newNote = new Note(note);
+//   this.notes.push(newNote);
+//   return newNote;
+// };
+
+let generateID = function () {
+  // Math.random should be unique because of its seeding algorithm.
+  // Convert it to base 36 (numbers + letters), and grab the first 9 characters
+  // after the decimal.
+  return "_" + Math.random().toString(36).substr(2, 9);
 };
 
-// pre-made templates
-NoteGen.prototype.makeToast = function (text) {
+function Note(content) {
+  this.content = content;
+  this.position = "";
+  this._id = generateID();
+}
+
+/* -------- pre-made templates -------*/
+Note.prototype.makeToast = function (text) {
   const newNote = new Note(
     $("<div>")
       .addClass("default-toast")
       .append(document.createTextNode(text))
       .hide()
   );
-  this.notes.push(newNote);
+  notes.push(newNote);
+  return newNote;
+};
+/* -----------------------------------*/
+
+Note.prototype.makeNote = function (content) {
+  const newNote = new Note(content);
+  notes.push(newNote);
   return newNote;
 };
 
-function Note(content) {
-  this.content = content;
-  this.position = "";
-}
-
 Note.prototype.display = function (position = "mid-left", element = "") {
-  const content = this.content;
+  let note = this;
+  let content = this.content;
+  // find and clone content, so that we can display multiple copies of the
+  // same note at the same time
+  if (notes.some((target) => target._id === note._id)) {
+    note = this.makeNote(content.clone());
+    content = note.content;
+  } else {
+    alert("this note does not exist or is not valid");
+  }
+
   if (element === "") {
     switch (position) {
       case "top-left":
@@ -131,6 +159,7 @@ Note.prototype.display = function (position = "mid-left", element = "") {
   }
   // fade in and fade out
   content.fadeIn(function () {
+    notes_on_display.push(note);
     content.delay(3000).fadeOut(function () {
       if (element === "") {
         content.removeClass(position);
@@ -139,6 +168,11 @@ Note.prototype.display = function (position = "mid-left", element = "") {
         content.removeClass("attached");
         content.css("top", "").css("left", "");
       }
+      notes_on_display = notes_on_display.filter(
+        (target) => target._id !== note._id
+      );
+      // avoid contaminating users' HTML
+      content.remove();
     });
   });
 };
