@@ -1,10 +1,13 @@
 "use strict";
 
 let notes = [];
-let notes_on_display = [];
+let notesOnDisplay = [];
+let defaultOptions = {
+  duration: 3000,
+};
 // function NoteGen() {
 //   this.notes = [];
-//   this.notes_on_display = [];
+//   this.notesOnDisplay = [];
 // }
 
 // NoteGen.makeNote = function (note) {
@@ -45,19 +48,23 @@ Note.prototype.makeNote = function (content) {
   return newNote;
 };
 
-Note.prototype.display = function (position = "mid-left", element = "") {
+Note.prototype.display = function (
+  position = "mid-left",
+  element = "body",
+  options = defaultOptions
+) {
   let note = this;
   let content = this.content;
   // find and clone content, so that we can display multiple copies of the
   // same note at the same time
   if (notes.some((target) => target._id === note._id)) {
-    note = this.makeNote(content.clone());
+    note = new Note(content.clone());
     content = note.content;
   } else {
     alert("this note does not exist or is not valid");
   }
 
-  if (element === "") {
+  if (element === "body") {
     switch (position) {
       case "top-left":
         content.addClass("top-left");
@@ -159,20 +166,16 @@ Note.prototype.display = function (position = "mid-left", element = "") {
   }
   // fade in and fade out
   content.fadeIn(function () {
-    notes_on_display.push(note);
-    content.delay(3000).fadeOut(function () {
-      if (element === "") {
-        content.removeClass(position);
-      } else {
-        element.unwrap();
-        content.removeClass("attached");
-        content.css("top", "").css("left", "");
-      }
-      notes_on_display = notes_on_display.filter(
-        (target) => target._id !== note._id
-      );
-      // avoid contaminating users' HTML
-      content.remove();
-    });
+    // zero duration => doesn't fade out
+    if (options["duration"] !== 0) {
+      content.delay(options.duration).fadeOut(function () {
+        if (element !== "") element.unwrap(); // TODO: check for parent class is wrapper instead?
+        notesOnDisplay = notesOnDisplay.filter(
+          (target) => target._id !== note._id
+        );
+        // avoid contaminating users' HTML
+        content.remove();
+      });
+    }
   });
 };
