@@ -13,23 +13,60 @@
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
       crossorigin="anonymous"
     />
+
     <!-- library css-->
+    <link rel="stylesheet" href="note-styles.css" />
+    <!-- landing page css-->
     <link rel="stylesheet" href="styles.css" />
-    <!-- First we load jquery from a Google CDN. -->
+
+    <!-- load jquery  -->
     <script
       defer
       src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
     ></script>
-    <!-- Then we load a script that depends on jQuery -->
+    <!-- My notification library -->
     <script defer type="text/javascript" src="Note.js"></script>
-    <!-- Then we load a script that depends on our libraries (and jQuery) -->
+    <!-- example usages -->
     <script defer type="text/javascript" src="example.js"></script>
   </head>
   <body>
     <div class="box-wrapper">
-      <span id="target" class="box">THIS IS A TEXT BOX</span>
+      <span id="target" class="box">NOTE.JS</span>
     </div>
-
-    <script src="" async defer></script>
+    <div class="container">
+      Create an instance to generate notes
+      <div class="card">
+        <code class="js">const noteGen = new Note()</code>
+      </div>
+      Create a new note with createNote() or using existing templates
+      <div class="card">
+        <code class="js"
+          >const note = noteGen.createNote().addText("hello")</code
+        >
+        or
+        <code class="js">const toast = noteGen.makeToast("hello") </code>
+      </div>
+      Display the note object you've created (let's take the "toast" above):
+      <br />
+      1) display the note on the viewport (attach to body)
+      <div class="card">
+        <code class="js">toast.display("top-center")</code>
+        <button class="topCenter btn btn-secondary">run</button>
+        <code class="js">toast.display("top-right")</code>
+        <button class="topRight btn btn-secondary">run</button>
+        <code class="js">toast.display("mid-right")</code>
+        <button class="midRight btn btn-secondary">run</button>
+        <code class="js">toast.display("bot-right")</code>
+        <button class="botRight btn btn-secondary">run</button>
+        <code class="js">toast.display("bot-center")</code>
+        <button class="botCenter btn btn-secondary">run</button>
+        <code class="js">toast.display("bot-left")</code>
+        <button class="botLeft btn btn-secondary">run</button>
+        <code class="js">toast.display("mid-left")</code>
+        <button class="midLeft btn btn-secondary">run</button>
+        <code class="js">toast.display("top-left")</code>
+        <button class="topLeft btn btn-secondary">run</button>
+      </div>
+    </div>
   </body>
 </html>
