@@ -33,6 +33,7 @@ Note.prototype.makeToast = function (text) {
   notes.push(newNote);
   return newNote;
 };
+
 /* -----------------------------------*/
 
 Note.prototype.createNote = function (content) {
@@ -98,6 +99,8 @@ Note.prototype.display = function (
   } else {
     alert("this note does not exist or is not valid");
   }
+
+  content.hide();
 
   if (target === "body") {
     switch (position) {
