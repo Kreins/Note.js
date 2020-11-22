@@ -5,16 +5,6 @@ let notesOnDisplay = [];
 let defaultOptions = {
   duration: 3000,
 };
-// function NoteGen() {
-//   this.notes = [];
-//   this.notesOnDisplay = [];
-// }
-
-// NoteGen.makeNote = function (note) {
-//   const newNote = new Note(note);
-//   this.notes.push(newNote);
-//   return newNote;
-// };
 
 let generateID = function () {
   // Math.random should be unique because of its seeding algorithm.
@@ -67,9 +57,30 @@ Note.prototype.removeText = function (index) {
   textNode.remove();
 };
 
-// Note.prototype.addButton = function (numButtons, buttonText) {
-//   for (let i = 0; i < numButtons; i++) {}
-// };
+const _makeButton = function (buttonText) {
+  const newButton = $("<button class='default-button'></button>")
+    .wrap("<div class='button-wrapper'></div>")
+    .append(document.createTextNode(buttonText));
+  return newButton.parent();
+};
+
+Note.prototype.addButton = function (numButtons, buttonText) {
+  for (let i = 0; i < numButtons; i++) {
+    const newButton = _makeButton(buttonText[i]);
+    console.log(newButton);
+    this.content.append(newButton);
+    this.buttons.push(newButton);
+  }
+};
+
+Note.prototype.removeButtons = function (buttonText) {
+  // if there's multiple buttons with the same text,
+  // remove the first one
+  buttonText.forEach((text) => {
+    const targets = this.buttons.filter((button) => button.text() === text);
+    targets[0].remove();
+  });
+};
 
 Note.prototype.display = function (
   position = "mid-left",

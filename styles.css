@@ -8,7 +8,7 @@
 
 /* ------------------- */
 .default-note-wrapper {
-  max-width: 400px;
+  width: 200px;
   padding: 10px;
   background-color: #e6faff;
   border-radius: 4px;
@@ -33,10 +33,10 @@
 
 .default-button {
   display: inline-block;
-  color: #007bff;
-  background-color: transparent;
+  color: #47a0ff;
+  background-color: #cdeef7;
   background-image: none;
-  border-color: #007bff;
+  border-color: #47a0ff;
   font-weight: 400;
   text-align: center;
   white-space: nowrap;
@@ -45,9 +45,20 @@
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   line-height: 1.5;
+  width: 100%;
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.default-button:hover {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.button-wrapper {
+  margin: 2px;
 }
 
 /* ----- GLOBAL POSITIONS -------- */
