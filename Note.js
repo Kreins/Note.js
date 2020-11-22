@@ -142,8 +142,8 @@ Note.prototype.display = function (
       target
         .wrap("<div class='target-wrapper'></div>")
         .parent()
-        .css("width", targetWidth)
-        .css("height", targetHeight);
+        .css("width", targetWidth + 1)
+        .css("height", targetHeight + 1);
     }
 
     target.after(content);
