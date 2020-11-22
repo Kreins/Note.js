@@ -24,9 +24,12 @@ let generateID = function () {
 };
 
 function Note(content) {
+  this._id = generateID();
   this.content = content;
   this.position = "";
-  this._id = generateID();
+  this.texts = [];
+  this.buttons = [];
+  this.forms = [];
 }
 
 /* -------- pre-made templates -------*/
@@ -42,15 +45,35 @@ Note.prototype.makeToast = function (text) {
 };
 /* -----------------------------------*/
 
-Note.prototype.makeNote = function (content) {
-  const newNote = new Note(content);
+Note.prototype.createNote = function (content) {
+  const newNote = new Note(
+    $("<div class='default-note-wrapper'></div>").append(content)
+  );
   notes.push(newNote);
   return newNote;
 };
 
+Note.prototype.addText = function (text) {
+  const textNode = $("<div class='text-wrapper'></div>").append(
+    document.createTextNode(text)
+  );
+  this.content.append(textNode);
+  this.texts.push(textNode);
+};
+
+Note.prototype.removeText = function (index) {
+  //index is the nth added text node
+  const textNode = this.texts[index];
+  textNode.remove();
+};
+
+// Note.prototype.addButton = function (numButtons, buttonText) {
+//   for (let i = 0; i < numButtons; i++) {}
+// };
+
 Note.prototype.display = function (
   position = "mid-left",
-  element = "body",
+  target = "body",
   options = defaultOptions
 ) {
   let note = this;
@@ -64,7 +87,7 @@ Note.prototype.display = function (
     alert("this note does not exist or is not valid");
   }
 
-  if (element === "body") {
+  if (target === "body") {
     switch (position) {
       case "top-left":
         content.addClass("top-left");
@@ -105,20 +128,24 @@ Note.prototype.display = function (
 
     // first wrap target into a div and append
     // the note as its child
-    const elementWidth = element.outerWidth();
-    const elementHeight = element.outerHeight();
+    const targetWidth = target.outerWidth();
+    const targetHeight = target.outerHeight();
 
     /* TODO: if target element has a border, then its padding should be taken into account when placing the note*/
-    // const padding_top = parseInt(element.css("padding-top"));
-    // const padding_bottom = parseInt(element.css("padding-bottom"));
-    // const border_top = parseInt(element.css("border-top-width"));
-    // const border_bottom = parseInt(element.css("border-bottom-width"));
-    element
-      .wrap("<div class='wrapper'></div>")
-      .parent()
-      .css("width", elementWidth)
-      .css("height", elementHeight);
-    element.after(content);
+    // const padding_top = parseInt(target.css("padding-top"));
+    // const padding_bottom = parseInt(target.css("padding-bottom"));
+    // const border_top = parseInt(target.css("border-top-width"));
+    // const border_bottom = parseInt(target.css("border-bottom-width"));
+    //TODO: have to check if target is already wrapped?
+    if (!target.parent().hasClass("target-wrapper")) {
+      target
+        .wrap("<div class='target-wrapper'></div>")
+        .parent()
+        .css("width", targetWidth)
+        .css("height", targetHeight);
+    }
+
+    target.after(content);
 
     content.addClass("attached");
 
@@ -134,7 +161,7 @@ Note.prototype.display = function (
         break;
       case "top-center":
         content
-          .css("left", (elementWidth - contentWidth) / 2)
+          .css("left", (targetWidth - contentWidth) / 2)
           .css("top", -contentHeight - 10); // 10px between target and content
         this.position = "elem-top-center";
         break;
@@ -146,20 +173,20 @@ Note.prototype.display = function (
         break;
       case "bot-center":
         content
-          .css("top", elementHeight + 10)
-          .css("left", (elementWidth - contentWidth) / 2); // 10px between target and content
+          .css("top", targetHeight + 10)
+          .css("left", (targetWidth - contentWidth) / 2); // 10px between target and content
         this.position = "elem-bot-center";
         break;
       case "mid-left":
         content
-          .css("top", (elementHeight - contentHeight) / 2)
+          .css("top", (targetHeight - contentHeight) / 2)
           .css("left", -contentWidth - 10); // 10px between target and content
         this.position = "elem-mid-left";
         break;
       case "mid-right":
         content
-          .css("top", (elementHeight - contentHeight) / 2)
-          .css("left", elementWidth + 10); // 10px between target and content
+          .css("top", (targetHeight - contentHeight) / 2)
+          .css("left", targetWidth + 10); // 10px between target and content
         this.position = "elem-mid-right";
         break;
     }
@@ -169,7 +196,7 @@ Note.prototype.display = function (
     // zero duration => doesn't fade out
     if (options["duration"] !== 0) {
       content.delay(options.duration).fadeOut(function () {
-        if (element !== "") element.unwrap(); // TODO: check for parent class is wrapper instead?
+        if (target !== "body") target.unwrap(); // TODO: check for parent class is wrapper instead?
         notesOnDisplay = notesOnDisplay.filter(
           (target) => target._id !== note._id
         );
