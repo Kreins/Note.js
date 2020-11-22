@@ -80,8 +80,8 @@ Note.prototype.display = function (
   let content = this.content;
   // find and clone content, so that we can display multiple copies of the
   // same note at the same time
-  if (notes.some((target) => target._id === note._id)) {
-    //TODO: push to notes ?
+  if (notes.some((element) => element._id === note._id)) {
+    //TODO: push to notes?
     note = new Note(content.clone());
     content = note.content;
   } else {
@@ -197,15 +197,16 @@ Note.prototype.display = function (
     // zero duration => doesn't fade out
     if (options["duration"] !== 0) {
       content.delay(options.duration).fadeOut(function () {
-        if (target.parent().children().length === 1) {
-          // no note is attached to the target
-          target.unwrap();
-        }
         notesOnDisplay = notesOnDisplay.filter(
           (element) => element._id !== note._id
         );
         // avoid contaminating users' HTML
         content.remove();
+
+        if (target !== "body" && target.parent().children().length === 1) {
+          // no note attached to the target
+          target.unwrap();
+        }
       });
     }
   });
