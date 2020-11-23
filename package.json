@@ -1,0 +1,23 @@
+{
+  "name": "js-library-wangj716",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Note.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csc309-fall-2020/js-library-wangj716.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/csc309-fall-2020/js-library-wangj716/issues"
+  },
+  "homepage": "https://github.com/csc309-fall-2020/js-library-wangj716#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
