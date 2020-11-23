@@ -30,8 +30,20 @@
     <script defer type="text/javascript" src="example.js"></script>
   </head>
   <body>
-    <div class="box-wrapper">
-      <span id="target" class="box">NOTE.JS</span>
+    <div class="container">
+      <h1>Note.js</h1>
+      <br />
+      Library Description:
+      <div class="card">
+        A library that generates customizable and interactive notifications. The
+        developer can choose where the notification message appears (top,
+        bottom, corner, etc.). The notifications can take the form of toast
+        messages, or they can attach themselves to different positions of any
+        element. The developer can create their notifications from scratch, or
+        use or modify the templates.
+      </div>
+      <br />
+      <br />
     </div>
     <div class="container">
       Create an instance to generate notes
@@ -46,26 +58,172 @@
         or
         <code class="js">const toast = noteGen.makeToast("hello") </code>
       </div>
+      <br />
       Display the note object you've created (let's take the "toast" above):
       <br />
-      1) display the note on the viewport (attach to body)
+      1) display the note on the viewport (attach to body):
       <div class="card">
-        <code class="js">toast.display("top-center")</code>
-        <button class="topCenter btn btn-secondary">run</button>
-        <code class="js">toast.display("top-right")</code>
-        <button class="topRight btn btn-secondary">run</button>
-        <code class="js">toast.display("mid-right")</code>
-        <button class="midRight btn btn-secondary">run</button>
-        <code class="js">toast.display("bot-right")</code>
-        <button class="botRight btn btn-secondary">run</button>
-        <code class="js">toast.display("bot-center")</code>
-        <button class="botCenter btn btn-secondary">run</button>
-        <code class="js">toast.display("bot-left")</code>
-        <button class="botLeft btn btn-secondary">run</button>
-        <code class="js">toast.display("mid-left")</code>
-        <button class="midLeft btn btn-secondary">run</button>
-        <code class="js">toast.display("top-left")</code>
-        <button class="topLeft btn btn-secondary">run</button>
+        <div class="row">
+          <div class="col-3">
+            <code class="js">toast.display("top-center")</code>
+          </div>
+          <div class="col">
+            <button class="topCenter btn btn-secondary float-right">run</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <code class="js">toast.display("top-right")</code>
+          </div>
+          <div class="col">
+            <button class="topRight btn btn-secondary float-right">run</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <code class="js">toast.display("mid-right")</code>
+          </div>
+          <div class="col">
+            <button class="midRight btn btn-secondary float-right">run</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <code class="js">toast.display("bot-right")</code>
+          </div>
+          <div class="col">
+            <button class="botRight btn btn-secondary float-right">run</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <code class="js">toast.display("bot-center")</code>
+          </div>
+          <div class="col">
+            <button class="botCenter btn btn-secondary float-right">run</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <code class="js">toast.display("bot-left")</code>
+          </div>
+          <div class="col">
+            <button class="botLeft btn btn-secondary float-right">run</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <code class="js">toast.display("mid-left")</code>
+          </div>
+          <div class="col">
+            <button class="midLeft btn btn-secondary float-right">run</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <code class="js">toast.display("top-left")</code>
+          </div>
+          <div class="col">
+            <button class="topLeft btn btn-secondary float-right">run</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="box-wrapper">
+        <span id="target" class="box">TARGET</span>
+      </div>
+
+      2) display the note relative to some element (attached to target element)
+      <div class="card">
+        You can change the duration of display, and duration of zero means the
+        note won't fade out.
+        <code class="js"
+          >toast.display("top-center", target, {duration: 0})</code
+        >
+      </div>
+      <div class="card">
+        <div class="row">
+          <div class="col-4">
+            <code class="js">toast.display("mid-right", target)</code>
+          </div>
+          <div class="col">
+            <button class="elem-midRight btn btn-secondary float-right">
+              run
+            </button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-4">
+            <code class="js">toast.display("bot-center", target)</code>
+          </div>
+          <div class="col">
+            <button class="elem-botCenter btn btn-secondary float-right">
+              run
+            </button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-4">
+            <code class="js">toast.display("mid-left", target)</code>
+          </div>
+          <div class="col">
+            <button class="elem-midLeft btn btn-secondary float-right">
+              run
+            </button>
+          </div>
+        </div>
+      </div>
+      <br />
+      Add or Deleting Text/Buttons from your note
+      <div class="card">
+        Let's start with empty note:
+        <code class="js">const note = noteGen.createNote() </code>
+        Add text:
+        <code class="js">note.addText("What is your favorite color?")</code>
+        <button class="addText btn btn-secondary float-right">
+          display note
+        </button>
+      </div>
+      <div class="card">
+        Add buttons:
+        <code class="js">note.addButtons(3, ["red", "blue", "green"])</code>
+        <button class="addButtons btn btn-secondary float-right">
+          display note
+        </button>
+      </div>
+      <div class="card">
+        Of course instead you could also chain the above commands together like
+        this:
+        <pre><code class="js"
+          >const note = noteGen.createNote()
+                    .addText("What is your favorite color?")
+                    .addButtons(3, ["red', "blue", "green"])</code
+        ></pre>
+      </div>
+      <div class="card">
+        Remove buttons:
+        <code class="js">note.removeButtons(["red, "blue"])</code>
+        <button class="removeButtons btn btn-secondary float-right">
+          display note
+        </button>
+      </div>
+      <div class="card">
+        Remove text:
+        <code class="js"
+          >note.removeText(0) //0 is index of the first added text</code
+        >
+        <button class="removeText btn btn-secondary float-right">
+          display note
+        </button>
       </div>
     </div>
   </body>

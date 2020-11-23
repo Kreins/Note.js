@@ -65,7 +65,7 @@ const _makeButton = function (buttonText) {
   return newButton.parent();
 };
 
-Note.prototype.addButton = function (numButtons, buttonText) {
+Note.prototype.addButtons = function (numButtons, buttonText) {
   for (let i = 0; i < numButtons; i++) {
     const newButton = _makeButton(buttonText[i]);
     console.log(newButton);
@@ -151,14 +151,13 @@ Note.prototype.display = function (
     // const padding_bottom = parseInt(target.css("padding-bottom"));
     // const border_top = parseInt(target.css("border-top-width"));
     // const border_bottom = parseInt(target.css("border-bottom-width"));
-    //TODO: have to check if target is already wrapped?
     if (!target.parent().hasClass("target-wrapper")) {
       target
         .wrap("<div class='target-wrapper'></div>")
         .parent()
         .css("width", targetWidth + 1)
         .css("height", targetHeight + 1);
-    }
+    } //TODO: target move slightly after wrapped
 
     target.after(content);
 
