@@ -97,6 +97,7 @@ Note.prototype.removeButtons = function (buttonText) {
     const targets = this.buttons.filter((button) => button.text() === text);
     // update content and buttons array
     targets[0].remove();
+    this.buttons.splice(this.buttons.indexOf(targets[0]), 1);
   });
   return this;
 };
