@@ -151,15 +151,22 @@ Note.prototype.display = function (
     // const padding_bottom = parseInt(target.css("padding-bottom"));
     // const border_top = parseInt(target.css("border-top-width"));
     // const border_bottom = parseInt(target.css("border-bottom-width"));
-    if (!target.parent().hasClass("target-wrapper")) {
-      target
-        .wrap("<div class='target-wrapper'></div>")
-        .parent()
+    if (!target.prev().hasClass("target-wrapper")) {
+      const targetWrapper = $("<div class='target-wrapper'></div>")
         .css("width", targetWidth + 1)
         .css("height", targetHeight + 1);
-    } //TODO: target move slightly after wrapped
+      target.before(targetWrapper);
+    }
 
-    target.after(content);
+    // if (!target.parent().hasClass("target-wrapper")) {
+    //   target
+    //     .wrap("<div class='target-wrapper'></div>")
+    //     .parent()
+    //     .css("width", targetWidth + 1)
+    //     .css("height", targetHeight + 1);
+    // } //TODO: target move slightly after wrapped
+
+    target.prev().append(content);
 
     content.addClass("attached");
 
@@ -216,9 +223,9 @@ Note.prototype.display = function (
         // avoid contaminating users' HTML
         content.remove();
 
-        if (target !== "body" && target.parent().children().length === 1) {
+        if (target !== "body" && target.prev().children().length === 0) {
           // no note attached to the target
-          target.unwrap();
+          target.prev().remove();
         }
       });
     }

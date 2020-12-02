@@ -13,7 +13,8 @@ $(".botLeft").click(() => toast.display("bot-left"));
 $(".midLeft").click(() => toast.display("mid-left"));
 $(".topLeft").click(() => toast.display("top-left"));
 
-toast.display("top-center", target, { duration: 0 });
+// toast.display("top-center", target, { duration: 0 });
+$(".elem-topCenter").click(() => toast.display("top-center", target));
 $(".elem-midRight").click(() => toast.display("mid-right", target));
 $(".elem-botCenter").click(() => toast.display("bot-center", target));
 $(".elem-midLeft").click(() => toast.display("mid-left", target));
