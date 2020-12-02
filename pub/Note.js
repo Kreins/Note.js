@@ -48,8 +48,20 @@ Note.prototype.addText = function (text) {
   const textNode = $("<div class='text-wrapper'></div>").append(
     document.createTextNode(text)
   );
+  // update content and texts array
   this.content.append(textNode);
   this.texts.push(textNode);
+  return this;
+};
+
+Note.prototype.replaceText = function (index, newText) {
+  const textNode = this.texts[index];
+  const newNode = $("<div class='text-wrapper'></div>").append(
+    document.createTextNode(newText)
+  );
+  // update content and texts array
+  textNode.replaceWith(newNode);
+  this.texts[index] = newNode;
   return this;
 };
 
@@ -57,6 +69,7 @@ Note.prototype.removeText = function (index) {
   //index is the nth added text node
   const textNode = this.texts[index];
   textNode.remove();
+  this.texts.splice(index, 1);
   return this;
 };
 
@@ -70,7 +83,7 @@ const _makeButton = function (buttonText) {
 Note.prototype.addButtons = function (buttonText) {
   for (let i = 0; i < buttonText.length; i++) {
     const newButton = _makeButton(buttonText[i]);
-    console.log(newButton);
+    // update content and buttons array
     this.content.append(newButton);
     this.buttons.push(newButton);
   }
@@ -82,6 +95,7 @@ Note.prototype.removeButtons = function (buttonText) {
   // remove the first one
   buttonText.forEach((text) => {
     const targets = this.buttons.filter((button) => button.text() === text);
+    // update content and buttons array
     targets[0].remove();
   });
   return this;
