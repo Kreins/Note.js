@@ -50,12 +50,14 @@ Note.prototype.addText = function (text) {
   );
   this.content.append(textNode);
   this.texts.push(textNode);
+  return this;
 };
 
 Note.prototype.removeText = function (index) {
   //index is the nth added text node
   const textNode = this.texts[index];
   textNode.remove();
+  return this;
 };
 
 const _makeButton = function (buttonText) {
@@ -72,6 +74,7 @@ Note.prototype.addButtons = function (numButtons, buttonText) {
     this.content.append(newButton);
     this.buttons.push(newButton);
   }
+  return this;
 };
 
 Note.prototype.removeButtons = function (buttonText) {
@@ -81,6 +84,7 @@ Note.prototype.removeButtons = function (buttonText) {
     const targets = this.buttons.filter((button) => button.text() === text);
     targets[0].remove();
   });
+  return this;
 };
 
 Note.prototype.display = function (
