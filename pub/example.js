@@ -25,26 +25,26 @@ $(".addText").click(() => note1.display("bot-center"));
 const note2 = noteGen
   .createNote()
   .addText("What is your favorite color?")
-  .addButtons(3, ["red", "blue", "green"]);
+  .addButtons(["red", "blue", "green"]);
 $(".addButtons").click(() => note2.display("bot-center"));
 
 const note3 = noteGen
   .createNote()
   .addText("What is your favorite color?")
-  .addButtons(3, ["red", "blue", "green"])
+  .addButtons(["red", "blue", "green"])
   .removeButtons(["red", "blue"]);
 $(".removeButtons").click(() => note3.display("bot-center"));
 
 const note4 = noteGen
   .createNote()
   .addText("What is your favorite color?")
-  .addButtons(3, ["red", "blue", "green"])
+  .addButtons(["red", "blue", "green"])
   .removeButtons(["red", "blue"])
   .removeText(0);
 $(".removeText").click(() => note4.display("bot-center"));
 
-const note5 = noteGen
-  .createNote()
-  .addText("Test Test Test")
-  .addButtons(2, ["yes", "no"]);
-note5.display("top-center", "body", { duration: 0 });
+// const note5 = noteGen
+//   .createNote()
+//   .addText("Test Test Test")
+//   .addButtons(["yes", "no"]);
+// note5.display("top-center", "body", { duration: 0 });

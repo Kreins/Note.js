@@ -67,8 +67,8 @@ const _makeButton = function (buttonText) {
   return newButton.parent();
 };
 
-Note.prototype.addButtons = function (numButtons, buttonText) {
-  for (let i = 0; i < numButtons; i++) {
+Note.prototype.addButtons = function (buttonText) {
+  for (let i = 0; i < buttonText.length; i++) {
     const newButton = _makeButton(buttonText[i]);
     console.log(newButton);
     this.content.append(newButton);
