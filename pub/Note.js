@@ -91,6 +91,16 @@ Note.prototype.addButtons = function (buttonText) {
   return this;
 };
 
+Note.prototype.replaceButton = function (index, newText) {
+  const buttonNode = this.buttons[index];
+  const newButtonNode = _makeButton([newText]);
+
+  buttonNode.replaceWith(newButtonNode);
+  this.buttons[index] = newButtonNode;
+
+  return this;
+};
+
 Note.prototype.removeButtons = function (buttonText) {
   // if there's multiple buttons with the same text,
   // remove the first one
