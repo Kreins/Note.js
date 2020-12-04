@@ -34,6 +34,15 @@ Note.prototype.makeToast = function (text) {
   return newNote;
 };
 
+Note.prototype.makePoll = function (title, buttonText) {
+  const newNote = new Note($("<div class='default-note-wrapper'></div>"));
+  newNote.addText(title);
+  newNote.addButtons(buttonText);
+  newNote.content.hide();
+  notes.push(newNote);
+  return newNote;
+};
+
 /* -------- initialize empty note ---------*/
 Note.prototype.createNote = function (content) {
   const newNote = new Note(
