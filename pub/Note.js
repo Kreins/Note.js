@@ -85,6 +85,8 @@ Note.prototype.removeText = function (index) {
 /* ============ button features ============== */
 const _handleClick = function (button) {
   console.log(button.innerText);
+  console.log($(button).parent().parent());
+  return button.innerText;
 };
 
 const _makeButton = function (buttonText) {
@@ -231,12 +233,10 @@ Note.prototype.display = function (
     // const padding_bottom = parseInt(target.css("padding-bottom"));
     // const border_top = parseInt(target.css("border-top-width"));
     // const border_bottom = parseInt(target.css("border-bottom-width"));
-    if (!target.prev().hasClass("target-wrapper")) {
-      const targetWrapper = $("<div class='target-wrapper'></div>")
-        .css("width", target.outerWidth() + 1)
-        .css("height", target.outerHeight() + 1);
-      target.before(targetWrapper);
-    }
+    const targetWrapper = $("<div class='target-wrapper'></div>")
+      .css("width", target.outerWidth() + 1)
+      .css("height", target.outerHeight() + 1);
+    target.before(targetWrapper);
     target.prev().append(content);
     _setAttachedPosition(note, target, position);
   }
@@ -250,12 +250,10 @@ Note.prototype.display = function (
           (element) => element._id !== note._id
         );
         // avoid contaminating users' HTML
-        content.remove();
-
-        if (target !== "body" && target.prev().children().length === 0) {
-          // no note attached to the target
-          target.prev().remove();
+        if (!content.parent() === document.body) {
+          content.parent().remove();
         }
+        content.remove();
       });
     }
   });

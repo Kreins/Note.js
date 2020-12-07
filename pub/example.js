@@ -26,7 +26,9 @@ const note2 = noteGen
   .createNote()
   .addText("What is your favorite color?")
   .addButtons(["red", "blue", "green"]);
-$(".addButtons").click(() => note2.display("bot-center"));
+$(".addButtons").click(() =>
+  note2.display("bot-center", "body", { duration: 0 })
+);
 
 const note3 = noteGen
   .createNote()
