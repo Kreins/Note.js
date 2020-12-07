@@ -83,10 +83,15 @@ Note.prototype.removeText = function (index) {
 };
 
 /* ============ button features ============== */
+const _handleClick = function (button) {
+  console.log(button.innerText);
+};
+
 const _makeButton = function (buttonText) {
   const newButton = $("<button class='default-button'></button>")
     .wrap("<div class='button-wrapper'></div>")
     .append(document.createTextNode(buttonText));
+  newButton.attr("onClick", "_handleClick(this);");
   return newButton.parent();
 };
 
@@ -169,23 +174,11 @@ const _setAttachedPosition = function (note, target, position) {
   const contentHeight = note.content.outerHeight();
 
   switch (position) {
-    case "top-left":
-      // TODO
-      break;
-    case "top-right":
-      // TODO
-      break;
     case "top-center":
       note.content
         .css("left", (targetWidth - contentWidth) / 2)
         .css("top", -contentHeight - 10); // 10px between target and content
       note.position = "elem-top-center";
-      break;
-    case "bot-left":
-      // TODO
-      break;
-    case "bot-right":
-      // TODO
       break;
     case "bot-center":
       note.content
