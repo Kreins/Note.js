@@ -1,7 +1,6 @@
 "use strict";
 
 let notes = [];
-let notesOnDisplay = [];
 let defaultOptions = {
   duration: 3000,
 };
@@ -85,7 +84,13 @@ Note.prototype.removeText = function (index) {
 /* ============ button features ============== */
 const _handleClick = function (button) {
   console.log(button.innerText);
-  console.log($(button).parent().parent());
+  const content = $(button).parent().parent();
+  content.fadeOut(function () {
+    if (!content.parent() === document.body) {
+      content.parent().remove();
+    }
+    content.remove();
+  });
   return button.innerText;
 };
 
@@ -246,9 +251,6 @@ Note.prototype.display = function (
     // zero duration => doesn't fade out
     if (options["duration"] !== 0) {
       content.delay(options.duration).fadeOut(function () {
-        notesOnDisplay = notesOnDisplay.filter(
-          (element) => element._id !== note._id
-        );
         // avoid contaminating users' HTML
         if (!content.parent() === document.body) {
           content.parent().remove();
