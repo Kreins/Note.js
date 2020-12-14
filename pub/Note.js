@@ -220,7 +220,6 @@
     // find and clone content, so that we can display multiple copies of the
     // same note at the same time
     if (notes.some((element) => element._id === note._id)) {
-      //TODO: push to notes?
       note = new Note(content.clone());
       content = note.content;
     } else {

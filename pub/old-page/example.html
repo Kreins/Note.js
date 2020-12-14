@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Library</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- bootstrap-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
+
+    <!-- library css-->
+    <link rel="stylesheet" href="note-styles.css" />
+    <!-- landing page css-->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- load jquery  -->
+    <script
+      defer
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    ></script>
+    <!-- My notification library -->
+    <script defer type="text/javascript" src="Note.js"></script>
+    <!-- example usages -->
+    <script defer type="text/javascript" src="example.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Note.js</h1>
+      <br />
+      Library Description:
+      <div class="card">
+        A library that generates customizable and interactive notifications. The
+        developer can choose where the notification message appears (top,
+        bottom, corner, etc.). The notifications can take the form of toast
+        messages, or they can attach themselves to different positions of any
+        element. The developer can create their notifications from scratch, or
+        use or modify the templates.
+      </div>
+      <br />
+      <br />
+    </div>
+    <div class="container">
+      Create an instance to generate notes
+      <div class="card">
+        <code class="js">const noteGen = new Note()</code>
+      </div>
+      Create a new note with createNote() or using existing templates
+      <div class="card">
+        <code class="js"
+          >const note = noteGen.createNote().addText("hello")</code
+        >
+        or
+        <code class="js">const toast = noteGen.makeToast("hello") </code>
+      </div>
+      <br />
+      Display the note object you've created (let's take the "toast" above):
+      <br />
+      1) display the note on the viewport (attach to body):
+      <div class="card">
+        <div class="row">
+          <div class="col-3">
+            <code class="js">toast.display("top-center")</code>
+          </div>
+          <div class="col">
+            <button class="topCenter btn btn-secondary float-right">run</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <code class="js">toast.display("top-right")</code>
+          </div>
+          <div class="col">
+            <button class="topRight btn btn-secondary float-right">run</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <code class="js">toast.display("mid-right")</code>
+          </div>
+          <div class="col">
+            <button class="midRight btn btn-secondary float-right">run</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <code class="js">toast.display("bot-right")</code>
+          </div>
+          <div class="col">
+            <button class="botRight btn btn-secondary float-right">run</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <code class="js">toast.display("bot-center")</code>
+          </div>
+          <div class="col">
+            <button class="botCenter btn btn-secondary float-right">run</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <code class="js">toast.display("bot-left")</code>
+          </div>
+          <div class="col">
+            <button class="botLeft btn btn-secondary float-right">run</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <code class="js">toast.display("mid-left")</code>
+          </div>
+          <div class="col">
+            <button class="midLeft btn btn-secondary float-right">run</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <code class="js">toast.display("top-left")</code>
+          </div>
+          <div class="col">
+            <button class="topLeft btn btn-secondary float-right">run</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="box-wrapper">
+        <span id="target" class="box">TARGET</span>
+      </div>
+
+      2) display the note relative to some element (attached to target element)
+      <div class="card">
+        You can change the duration of display, and duration of zero means the
+        note won't fade out.
+        <code class="js"
+          >toast.display("top-center", target, {duration: 0})</code
+        >
+        <button class="elem-topCenter btn btn-secondary float-right">
+          run
+        </button>
+      </div>
+      <div class="card">
+        <div class="row">
+          <div class="col-4">
+            <code class="js">toast.display("mid-right", target)</code>
+          </div>
+          <div class="col">
+            <button class="elem-midRight btn btn-secondary float-right">
+              run
+            </button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-4">
+            <code class="js">toast.display("bot-center", target)</code>
+          </div>
+          <div class="col">
+            <button class="elem-botCenter btn btn-secondary float-right">
+              run
+            </button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-4">
+            <code class="js">toast.display("mid-left", target)</code>
+          </div>
+          <div class="col">
+            <button class="elem-midLeft btn btn-secondary float-right">
+              run
+            </button>
+          </div>
+        </div>
+      </div>
+      <br />
+      Add or Deleting Text/Buttons from your note
+      <div class="card">
+        Let's start with empty note:
+        <code class="js">const note = noteGen.createNote() </code>
+        Add text:
+        <code class="js">note.addText("What is your favorite color?")</code>
+        <button class="addText btn btn-secondary float-right">
+          display note
+        </button>
+      </div>
+      <div class="card">
+        Add buttons:
+        <code class="js">note.addButtons(["red", "blue", "green"])</code>
+        <button class="addButtons btn btn-secondary float-right">
+          display note
+        </button>
+      </div>
+      <div class="card">
+        Of course instead you could also chain the above commands together like
+        this:
+        <pre><code class="js"
+          >const note = noteGen.createNote()
+                    .addText("What is your favorite color?")
+                    .addButtons(["red', "blue", "green"])</code
+        ></pre>
+      </div>
+      <div class="card">
+        Remove buttons:
+        <code class="js">note.removeButtons(["red, "blue"])</code>
+        <button class="removeButtons btn btn-secondary float-right">
+          display note
+        </button>
+      </div>
+      <div class="card">
+        Remove text:
+        <code class="js"
+          >note.removeText(0) //0 is index of the first added text</code
+        >
+        <button class="removeText btn btn-secondary float-right">
+          display note
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
