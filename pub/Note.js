@@ -25,8 +25,7 @@
   /* -------- pre-made templates -------*/
   Note.prototype.makeToast = function (text) {
     const newNote = new Note(
-      $("<div>")
-        .addClass("default-toast")
+      $("<div class='default-note-wrapper'></div>")
         .append(document.createTextNode(text))
         .hide()
     );

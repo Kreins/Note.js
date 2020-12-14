@@ -10,7 +10,10 @@
     
     <meta name="description" content="A notification library with modularized component">
     <meta name="author" content="Jun Da Wang">    
-    <link rel="shortcut icon" href="favicon.ico"> 
+	<link rel="shortcut icon" href="favicon.ico"> 
+	
+	<!-- library css-->
+	<link rel="stylesheet" href="note-styles.css" />
     
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
@@ -22,7 +25,8 @@
     <link rel="stylesheet" href="assets/plugins/prism/prism.css">
 
     <!-- Theme CSS -->  
-    <link id="theme-style" rel="stylesheet" href="assets/css/theme.css">
+	<link id="theme-style" rel="stylesheet" href="assets/css/theme.css">
+	
 
 </head> 
 
@@ -45,13 +49,6 @@
 				            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
 				        </form>
 	                </div>
-	
-					<ul class="social-list list-inline mx-md-3 mx-lg-5 mb-0 d-none d-lg-flex">
-						<li class="list-inline-item"><a href="#"><i class="fab fa-github fa-fw"></i></a></li>
-			            <li class="list-inline-item"><a href="#"><i class="fab fa-twitter fa-fw"></i></a></li>
-		                <li class="list-inline-item"><a href="#"><i class="fab fa-slack fa-fw"></i></a></li>
-		                <li class="list-inline-item"><a href="#"><i class="fab fa-product-hunt fa-fw"></i></a></li>
-		            </ul><!--//social-list-->
 	            </div><!--//docs-top-utilities-->
             </div><!--//container-->
         </div><!--//branding-->
@@ -68,7 +65,7 @@
 		    <nav id="docs-nav" class="docs-nav navbar">
 			    <ul class="section-items list-unstyled nav flex-column pb-3">
 				    <li class="nav-item section-title"><a class="nav-link scrollto active" href="#section-1"><span class="theme-icon-holder mr-2"><i class="fas fa-map-signs"></i></span>Getting Started</a></li>
-				    <li class="nav-item"><a class="nav-link scrollto" href="#item-1-1">Section Item 1.1</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-1-1">Installation</a></li>
 				    <li class="nav-item"><a class="nav-link scrollto" href="#item-1-2">Section Item 1.2</a></li>
 				    <li class="nav-item"><a class="nav-link scrollto" href="#item-1-3">Section Item 1.3</a></li>
 				    <li class="nav-item"><a class="nav-link scrollto" href="#item-1-4">Section Item 1.4</a></li>
@@ -90,18 +87,20 @@
 		    <div class="container">
 			    <article class="docs-article" id="section-1">
 				    <header class="docs-header">
-					    <h1 class="docs-heading">Getting Started <span class="docs-time">Last updated: 2019-06-01</span></h1>
+					    <h1 class="docs-heading">Getting Started</h1>
 					    <section class="docs-intro">
-						    <p>Section intro goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque finibus condimentum nisl id vulputate. Praesent aliquet varius eros interdum suscipit. Donec eu purus sed nibh convallis bibendum quis vitae turpis. Duis vestibulum diam lorem, vitae dapibus nibh facilisis a. Fusce in malesuada odio.</p>
+						    <h5>A library that generates customizable and interactive notifications. The notifications ("notes") 
+								can take the form of toast messages, or they can attach themselves to different positions of any
+								element. Notifications can be built easily with the provided components.</h5>
 						</section><!--//docs-intro-->
 						
-						<p>You can <a class="theme-link" href="https://github.com/highlightjs/highlight.js" target="_blank" rel="noopener noreferrer">embed your code snippets using highlight.js</a> It supports <a class="theme-link" href="https://highlightjs.org/static/demo/" target="_blank" rel="noopener noreferrer">185 languages and 89 styles</a>.</p>
-						<pre><code class="language-css">p { color: red }</code></pre>
+						<!-- <p>You can <a class="theme-link" href="https://github.com/highlightjs/highlight.js" target="_blank" rel="noopener noreferrer">embed your code snippets using highlight.js</a> It supports <a class="theme-link" href="https://highlightjs.org/static/demo/" target="_blank" rel="noopener noreferrer">185 languages and 89 styles</a>.</p>
+						<pre><code class="language-css">p { color: red }</code></pre> -->
 						
 						
 				    </header>
 				    <section class="docs-section" id="item-1-1">
-						<h2 class="section-heading">Section Item 1.1</h2>
+						<h2 class="section-heading">Installation</h2>
 						<p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo. Aliquam sagittis purus nisi, at commodo augue convallis id. </p>
 						<p>Code Example: <code>npm install &lt;package&gt;</code></p>
 						<h5>Unordered List Examples:</h5>
@@ -389,14 +388,102 @@
 			    
 			    <article class="docs-article" id="section-2">
 				    <header class="docs-header">
-					    <h1 class="docs-heading">Installation</h1>
+					    <h1 class="docs-heading">Examples</h1>
 					    <section class="docs-intro">
 						    <p>Section intro goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque finibus condimentum nisl id vulputate. Praesent aliquet varius eros interdum suscipit. Donec eu purus sed nibh convallis bibendum quis vitae turpis. Duis vestibulum diam lorem, vitae dapibus nibh facilisis a. Fusce in malesuada odio.</p>
 						</section><!--//docs-intro-->
 				    </header>
 				     <section class="docs-section" id="item-2-1">
-						<h2 class="section-heading">Section Item 2.1</h2>
-						<p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo. Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin est. Vestibulum ultricies malesuada tempor.</p>
+						<h2 class="section-heading">Examples</h2>
+						<h5>Create instance to generate notes:</h5>
+						<pre><code class="language-js">const noteGen = new Note()</code></pre>
+						<br>
+						<h5>Create a new Note:</h5>
+						<pre><code class="language-js">// with createNote():
+const toast = noteGen.createNote().addText("hello")
+
+// or use templates:
+const toast = noteGen.makeToast("hello")
+
+/* the two options above achieve the same result */</code></pre> 
+						<br>
+						<h5>Now we have a note, let's display it on screen:</h5>
+						<ul>
+							<li><p>You can display the note on the viewport (attach to body):</p></li>
+							<div class="row">
+								<div class="col-6">
+								  <pre><code class="language-js">toast.display("top-center")</code></pre>
+								</div>
+								<div class="col my-auto">
+								  <button class="topCenter btn btn-secondary float-right">run</button>
+								</div>
+							</div>
+					  
+							<div class="row">
+								<div class="col-6">
+									<pre><code class="language-js">toast.display("top-right")</code></pre>
+								</div>
+								<div class="col my-auto">
+									<button class="topRight btn btn-secondary float-right">run</button>
+								</div>
+							</div>
+					  
+							  <div class="row">
+								<div class="col-6">
+								  <pre><code class="language-js">toast.display("mid-right")</code></pre>
+								</div>
+								<div class="col my-auto">
+								  <button class="midRight btn btn-secondary float-right">run</button>
+								</div>
+							  </div>
+					  
+							  <div class="row">
+								<div class="col-6">
+								  <pre><code class="language-js">toast.display("bot-right")</code></pre>
+								</div>
+								<div class="col my-auto">
+								  <button class="botRight btn btn-secondary float-right">run</button>
+								</div>
+							  </div>
+					  
+							  <div class="row">
+								<div class="col-6">
+								  <pre><code class="language-js">toast.display("bot-center")</code></pre>
+								</div>
+								<div class="col my-auto">
+								  <button class="botCenter btn btn-secondary float-right">run</button>
+								</div>
+							  </div>
+					  
+							  <div class="row">
+								<div class="col-6">
+								  <pre><code class="language-js">toast.display("bot-left")</code></pre>
+								</div>
+								<div class="col my-auto">
+								  <button class="botLeft btn btn-secondary float-right">run</button>
+								</div>
+							  </div>
+					  
+							  <div class="row">
+								<div class="col-6">
+								  <pre><code class="language-js">toast.display("mid-left")</code></pre>
+								</div>
+								<div class="col my-auto">
+								  <button class="midLeft btn btn-secondary float-right">run</button>
+								</div>
+							  </div>
+					  
+							  <div class="row">
+								<div class="col-6">
+								  <pre><code class="language-js">toast.display("top-left")</code></pre>
+								</div>
+								<div class="col my-auto">
+								  <button class="topLeft btn btn-secondary float-right">run</button>
+								</div>
+							  </div>
+						    <li><strong class="mr-1">CSS:</strong> <code>#foo { color: red }</code></li>
+
+						</ul>
 					</section><!--//section-->
 					
 					<section class="docs-section" id="item-2-2">
@@ -615,10 +702,19 @@
     
    
        
-    <!-- Javascript -->          
-    <script src="assets/plugins/jquery-3.4.1.min.js"></script>
+	<!-- Javascript -->   
+	<!-- load jquery  -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+	></script>
+       
     <script src="assets/plugins/popper.min.js"></script>
-    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
+	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
+	
+	<!-- My notification library -->
+	<script type="text/javascript" src="Note.js"></script>
+	<!-- example usages -->
+	<script type="text/javascript" src="example.js"></script>
     
     
     <!-- Page Specific JS -->

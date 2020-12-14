@@ -6,6 +6,7 @@
   border-radius: 4px;
   text-align: center;
   border: 1px solid #66e0ff;
+  z-index: 100000;
 }
 
 .default-toast {
