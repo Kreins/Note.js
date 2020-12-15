@@ -1,621 +1,1013 @@
 <!DOCTYPE html>
-<html lang="en"> 
-<head>
+<html lang="en">
+  <head>
     <title>Note.js</title>
-    
+
     <!-- Meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta name="description" content="A notification library with modularized component">
-    <meta name="author" content="Jun Da Wang">    
-	<link rel="shortcut icon" href="favicon.ico"> 
-	
-	<!-- library css-->
-	<link rel="stylesheet" href="note-styles.css" />
-    
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="A notification library with modularized component"
+    />
+    <meta name="author" content="Jun Da Wang" />
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <!-- library css-->
+    <link rel="stylesheet" href="note-styles.css" />
+
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
-    
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- FontAwesome JS-->
     <script defer src="assets/fontawesome/js/all.min.js"></script>
-    
+
     <!-- Plugins CSS -->
-    <link rel="stylesheet" href="assets/plugins/prism/prism.css">
+    <link rel="stylesheet" href="assets/plugins/prism/prism.css" />
 
-    <!-- Theme CSS -->  
-	<link id="theme-style" rel="stylesheet" href="assets/css/theme.css">
-	
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/theme.css" />
+  </head>
 
-</head> 
-
-<body class="docs-page">    
-    <header class="header fixed-top">	    
-        <div class="branding docs-branding">
-            <div class="container-fluid position-relative py-2">
-                <div class="docs-logo-wrapper">
-					<button id="docs-sidebar-toggler" class="docs-sidebar-toggler docs-sidebar-visible mr-2 d-xl-none" type="button">
-	                    <span></span>
-	                    <span></span>
-	                    <span></span>
-	                </button>
-	                <div class="site-logo"><a class="navbar-brand" href="index.html"><span class="logo-text">Note<span class="text-alt">.js</span></span></a></div>    
-                </div><!--//docs-logo-wrapper-->
-	            <div class="docs-top-utilities d-flex justify-content-end align-items-center">
-	                <div class="top-search-box d-none d-lg-flex">
-		                <form class="search-form">
-				            <input type="text" placeholder="Search the docs..." name="search" class="form-control search-input">
-				            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
-				        </form>
-	                </div>
-	            </div><!--//docs-top-utilities-->
-            </div><!--//container-->
-        </div><!--//branding-->
-    </header><!--//header-->
-    
-    <div class="docs-wrapper">
-	    <div id="docs-sidebar" class="docs-sidebar">
-		    <div class="top-search-box d-lg-none p-3">
-                <form class="search-form">
-		            <input type="text" placeholder="Search the docs..." name="search" class="form-control search-input">
-		            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
-		        </form>
+  <body class="docs-page">
+    <header class="header fixed-top">
+      <div class="branding docs-branding">
+        <div class="container-fluid position-relative py-2">
+          <div class="docs-logo-wrapper">
+            <button
+              id="docs-sidebar-toggler"
+              class="docs-sidebar-toggler docs-sidebar-visible mr-2 d-xl-none"
+              type="button"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+            <div class="site-logo">
+              <a class="navbar-brand" href="index.html"
+                ><span class="logo-text"
+                  >Note<span class="text-alt">.js</span></span
+                ></a
+              >
             </div>
-		    <nav id="docs-nav" class="docs-nav navbar">
-			    <ul class="section-items list-unstyled nav flex-column pb-3">
-				    <li class="nav-item section-title"><a class="nav-link scrollto active" href="#section-1"><span class="theme-icon-holder mr-2"><i class="fas fa-map-signs"></i></span>Getting Started</a></li>
-				    <li class="nav-item"><a class="nav-link scrollto" href="#item-1-1">Installation</a></li>
-				    <li class="nav-item"><a class="nav-link scrollto" href="#item-1-2">Section Item 1.2</a></li>
-				    <li class="nav-item"><a class="nav-link scrollto" href="#item-1-3">Section Item 1.3</a></li>
-				    <li class="nav-item"><a class="nav-link scrollto" href="#item-1-4">Section Item 1.4</a></li>
-				    <li class="nav-item"><a class="nav-link scrollto" href="#item-1-5">Section Item 1.5</a></li>
-				    <li class="nav-item"><a class="nav-link scrollto" href="#item-1-6">Section Item 1.6</a></li>
-				    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#section-2"><span class="theme-icon-holder mr-2"><i class="fas fa-arrow-down"></i></span>Examples</a></li>
-				    <li class="nav-item"><a class="nav-link scrollto" href="#item-2-1">Create</a></li>
-				    <li class="nav-item"><a class="nav-link scrollto" href="#item-2-2">Display</a></li>
-				    <li class="nav-item"><a class="nav-link scrollto" href="#item-2-3">Modify</a></li>
-				    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#section-3"><span class="theme-icon-holder mr-2"><i class="fas fa-box"></i></span>APIs</a></li>
-				    <li class="nav-item"><a class="nav-link scrollto" href="#item-3-1">Section Item 3.1</a></li>
-				    <li class="nav-item"><a class="nav-link scrollto" href="#item-3-2">Section Item 3.2</a></li>
-				    <li class="nav-item"><a class="nav-link scrollto" href="#item-3-3">Section Item 3.3</a></li>
-			    </ul>
+          </div>
+          <!--//docs-logo-wrapper-->
+          <div
+            class="docs-top-utilities d-flex justify-content-end align-items-center"
+          >
+            <div class="top-search-box d-none d-lg-flex">
+              <form class="search-form">
+                <input
+                  type="text"
+                  placeholder="Search the docs..."
+                  name="search"
+                  class="form-control search-input"
+                />
+                <button type="submit" class="btn search-btn" value="Search">
+                  <i class="fas fa-search"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+          <!--//docs-top-utilities-->
+        </div>
+        <!--//container-->
+      </div>
+      <!--//branding-->
+    </header>
+    <!--//header-->
 
-		    </nav><!--//docs-nav-->
-	    </div><!--//docs-sidebar-->
-	    <div class="docs-content">
-		    <div class="container">
-			    <article class="docs-article" id="section-1">
-				    <header class="docs-header">
-					    <h1 class="docs-heading">Getting Started</h1>
-					    <section class="docs-intro">
-						    <h5>A library that generates customizable and interactive notifications. The notifications ("notes") 
-								can take the form of toast messages, or they can attach themselves to different positions of any
-								element. Notifications can be built easily with the provided components.</h5>
-						</section><!--//docs-intro-->
-						
-						<!-- <p>You can <a class="theme-link" href="https://github.com/highlightjs/highlight.js" target="_blank" rel="noopener noreferrer">embed your code snippets using highlight.js</a> It supports <a class="theme-link" href="https://highlightjs.org/static/demo/" target="_blank" rel="noopener noreferrer">185 languages and 89 styles</a>.</p>
+    <div class="docs-wrapper">
+      <div id="docs-sidebar" class="docs-sidebar">
+        <div class="top-search-box d-lg-none p-3">
+          <form class="search-form">
+            <input
+              type="text"
+              placeholder="Search the docs..."
+              name="search"
+              class="form-control search-input"
+            />
+            <button type="submit" class="btn search-btn" value="Search">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+        </div>
+        <nav id="docs-nav" class="docs-nav navbar">
+          <ul class="section-items list-unstyled nav flex-column pb-3">
+            <li class="nav-item section-title">
+              <a class="nav-link scrollto active" href="#section-1"
+                ><span class="theme-icon-holder mr-2"
+                  ><i class="fas fa-map-signs"></i></span
+                >Getting Started</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link scrollto" href="#item-1-1">Installation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link scrollto" href="#item-1-2">Section Item 1.2</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link scrollto" href="#item-1-3">Section Item 1.3</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link scrollto" href="#item-1-4">Section Item 1.4</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link scrollto" href="#item-1-5">Section Item 1.5</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link scrollto" href="#item-1-6">Section Item 1.6</a>
+            </li>
+            <li class="nav-item section-title mt-3">
+              <a class="nav-link scrollto" href="#section-2"
+                ><span class="theme-icon-holder mr-2"
+                  ><i class="fas fa-arrow-down"></i></span
+                >Examples</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link scrollto" href="#item-2-1">Create</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link scrollto" href="#item-2-2">Display</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link scrollto" href="#item-2-3">Modify</a>
+            </li>
+            <li class="nav-item section-title mt-3">
+              <a class="nav-link scrollto" href="#section-3"
+                ><span class="theme-icon-holder mr-2"
+                  ><i class="fas fa-box"></i></span
+                >APIs</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link scrollto" href="#item-3-1">Section Item 3.1</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link scrollto" href="#item-3-2">Section Item 3.2</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link scrollto" href="#item-3-3">Section Item 3.3</a>
+            </li>
+          </ul>
+        </nav>
+        <!--//docs-nav-->
+      </div>
+      <!--//docs-sidebar-->
+      <div class="docs-content">
+        <div class="container">
+          <article class="docs-article" id="section-1">
+            <header class="docs-header">
+              <h1 class="docs-heading">Getting Started</h1>
+              <section class="docs-intro">
+                <h5>
+                  A library that generates customizable and interactive
+                  notifications. The notifications ("notes") can take the form
+                  of toast messages, or they can attach themselves to different
+                  positions of any element. Notifications can be built easily
+                  with the provided components.
+                </h5>
+              </section>
+              <!--//docs-intro-->
+
+              <!-- <p>You can <a class="theme-link" href="https://github.com/highlightjs/highlight.js" target="_blank" rel="noopener noreferrer">embed your code snippets using highlight.js</a> It supports <a class="theme-link" href="https://highlightjs.org/static/demo/" target="_blank" rel="noopener noreferrer">185 languages and 89 styles</a>.</p>
 						<pre><code class="language-css">p { color: red }</code></pre> -->
-						
-						
-				    </header>
-				    <section class="docs-section" id="item-1-1">
-						<h2 class="section-heading">Installation</h2>
-						<p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo. Aliquam sagittis purus nisi, at commodo augue convallis id. </p>
-						<p>Code Example: <code>npm install &lt;package&gt;</code></p>
-						<h5>Unordered List Examples:</h5>
-						<ul>
-						    <li><strong class="mr-1">HTML5:</strong> <code>&lt;div id="foo"&gt;</code></li>
-						    <li><strong class="mr-1">CSS:</strong> <code>#foo { color: red }</code></li>
-						    <li><strong class="mr-1">JavaScript:</strong> <code>console.log(&#x27;#foo\bar&#x27;);</code></li>
-						</ul>
-						<h5>Ordered List Examples:</h5>
-						<ol>
-							<li>Download lorem ipsum dolor sit amet.</li>
-							<li>Click ipsum faucibus venenatis.</li>
-							<li>Configure fermentum malesuada nunc.</li>
-							<li>Deploy donec non ante libero.</li>
-						</ol>
-                        <h5>Callout Examples:</h5>
-                        <div class="callout-block callout-block-info">
-                            
-                            <div class="content">
-                                <h4 class="callout-title">
-	                                <span class="callout-icon-holder mr-1">
-		                                <i class="fas fa-info-circle"></i>
-		                            </span><!--//icon-holder-->
-	                                Note
-	                            </h4>
-                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium <code>&lt;code&gt;</code> , Nemo enim ipsam voluptatem quia voluptas <a href="#">link example</a> sit aspernatur aut odit aut fugit.</p>
-                            </div><!--//content-->
-                        </div><!--//callout-block-->
-                        
-                        <div class="callout-block callout-block-warning">
-                            <div class="content">
-                                <h4 class="callout-title">
-	                                <span class="callout-icon-holder mr-1">
-		                                <i class="fas fa-bullhorn"></i>
-		                            </span><!--//icon-holder-->
-	                                Warning
-	                            </h4>
-                                <p>Nunc hendrerit odio quis dignissim efficitur. Proin ut finibus libero. Morbi posuere fringilla felis eget sagittis. Fusce sem orci, cursus in tortor <a href="#">link example</a> tellus vel diam viverra elementum.</p>
-                            </div><!--//content-->
-                        </div><!--//callout-block-->
-                        
-                        <div class="callout-block callout-block-success">
-                            <div class="content">
-                                <h4 class="callout-title">
-	                                <span class="callout-icon-holder mr-1">
-		                                <i class="fas fa-thumbs-up"></i>
-		                            </span><!--//icon-holder-->
-	                                Tip
-	                            </h4>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. <a href="#">Link example</a> aenean commodo ligula eget dolor.</p>
-                            </div><!--//content-->
-                        </div><!--//callout-block-->
-                        
-                        <div class="callout-block callout-block-danger mr-1">
-                            <div class="content">
-                                <h4 class="callout-title">
-	                                <span class="callout-icon-holder">
-		                                <i class="fas fa-exclamation-triangle"></i>
-		                            </span><!--//icon-holder-->
-	                                Danger
-	                            </h4>
-                                <p>Morbi eget interdum sapien. Donec sed turpis sed nulla lacinia accumsan vitae ut tellus. Aenean vestibulum <a href="#">Link example</a> maximus ipsum vel dignissim. Morbi ornare elit sit amet massa feugiat, viverra dictum ipsum pellentesque. </p>
-                            </div><!--//content-->
-                        </div><!--//callout-block-->
-                        
-                        <h5 class="mt-5">Alert Examples:</h5>
-                        <div class="alert alert-primary" role="alert">
-						  This is a primary alert—check it out!
-						</div>
-						<div class="alert alert-secondary" role="alert">
-						  This is a secondary alert—check it out!
-						</div>
-						<div class="alert alert-success" role="alert">
-						  This is a success alert—check it out!
-						</div>
-						<div class="alert alert-danger" role="alert">
-						  This is a danger alert—check it out!
-						</div>
-						<div class="alert alert-warning" role="alert">
-						  This is a warning alert—check it out!
-						</div>
-						<div class="alert alert-info" role="alert">
-						  This is a info alert—check it out!
-						</div>
-						<div class="alert alert-light" role="alert">
-						  This is a light alert—check it out!
-						</div>
-						<div class="alert alert-dark" role="alert">
-						  This is a dark alert—check it out!
-						</div>
-                        
-                       
-					</section><!--//section-->
-					
-					<section class="docs-section" id="item-1-2">
-						<h2 class="section-heading">Section Item 1.2</h2>
-						<p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo. Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin est. Vestibulum ultricies malesuada tempor.</p>
-						<h5>Image Lightbox Example:</h5>
-						<figure class="figure docs-figure py-3">
-						    <a href="assets/images/features/appify-theme-projects-overview-lg.jpg" data-title="Image Lightbox Example" data-toggle="lightbox"><img class="figure-img img-fluid shadow rounded" src="assets/images/features/appify-add-members.gif" alt="" style="width: 600px;"></a>
-						    <figcaption class="figure-caption mt-3"><i class="fas fa-info-circle mr-2"></i>Credit: the above screencast is taken from <a  class="theme-link" href="https://themes.3rdwavemedia.com/bootstrap-templates/product/appify-bootstrap-4-admin-template-for-app-developers/" target="_blank"><i class="fas fa-external-link-alt"></i>Appify theme</a>.</figcaption>
-						</figure>
-						
-						<h5>Custom Table:</h5>
-						<div class="table-responsive my-4">
-							<table class="table table-bordered">
-								<tbody>
-								    <tr>
-									    <th class="theme-bg-light"><a class="theme-link" href="#">Option 1</a></th>
-									    <td>Option 1 desc lorem ipsum dolor sit amet, consectetur adipiscing elit. </td>
-									</tr>
-									<tr>
-									      <th class="theme-bg-light"><a class="theme-link" href="#">Option 2</a></th>
-									      <td>Option 2 desc lorem ipsum dolor sit amet, consectetur adipiscing elit. </td>
-									</tr>
-									
-									<tr>
-									    <th class="theme-bg-light"><a class="theme-link" href="#">Option 3</a></th>
-									    <td>Option 3 desc lorem ipsum dolor sit amet, consectetur adipiscing elit. </td>
-									</tr>
-									
-									<tr>
-									    <th class="theme-bg-light"><a class="theme-link" href="#">Option 4</a></th>
-									    <td>Option 4 desc lorem ipsum dolor sit amet, consectetur adipiscing elit. </td>
-									</tr>
-								</tbody>
-							</table>
-						</div><!--//table-responsive-->
-						<h5>Stripped Table:</h5>
-						<div class="table-responsive my-4">
-							<table class="table table-striped">
-								<thead>
-									<tr>
-										<th scope="col">#</th>
-										<th scope="col">First</th>
-										<th scope="col">Last</th>
-										<th scope="col">Handle</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<th scope="row">1</th>
-										<td>Mark</td>
-										<td>Otto</td>
-										<td>@mdo</td>
-									</tr>
-									<tr>
-										<th scope="row">2</th>
-										<td>Jacob</td>
-										<td>Thornton</td>
-										<td>@fat</td>
-									</tr>
-									<tr>
-										<th scope="row">3</th>
-										<td>Larry</td>
-										<td>the Bird</td>
-										<td>@twitter</td>
-									</tr>
-								</tbody>
-							</table>
-						</div><!--//table-responsive-->
-						<h5>Bordered Dark Table:</h5>
-						<div class="table-responsive my-4">
-							<table class="table table-bordered table-dark">
-								<thead>
-									<tr>
-										<th scope="col">#</th>
-										<th scope="col">First</th>
-										<th scope="col">Last</th>
-										<th scope="col">Handle</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<th scope="row">1</th>
-										<td>Mark</td>
-										<td>Otto</td>
-										<td>@mdo</td>
-									</tr>
-									<tr>
-										<th scope="row">2</th>
-										<td>Jacob</td>
-										<td>Thornton</td>
-										<td>@fat</td>
-									</tr>
-									<tr>
-										<th scope="row">3</th>
-										<td>Larry</td>
-										<td>the Bird</td>
-										<td>@twitter</td>
-									</tr>
-								</tbody>
-							</table>
-						</div><!--//table-responsive-->
-						
-						
-					</section><!--//section-->
-					
-					<section class="docs-section" id="item-1-3">
-						<h2 class="section-heading">Section Item 1.3</h2>
-						<p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo. Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin est. Vestibulum ultricies malesuada tempor.</p>
-						<h5>Badges Examples:</h5>
-						<div class="my-4">
-						    <span class="badge badge-primary">Primary</span>
-							<span class="badge badge-secondary">Secondary</span>
-							<span class="badge badge-success">Success</span>
-							<span class="badge badge-danger">Danger</span>
-							<span class="badge badge-warning">Warning</span>
-							<span class="badge badge-info">Info</span>
-							<span class="badge badge-light">Light</span>
-							<span class="badge badge-dark">Dark</span>
-						</div>
-						<h5>Button Examples:</h5>
-						<div class="row my-3">
-                        <div class="col-md-6 col-12">
-                                <ul class="list list-unstyled pl-0">
-                                    <li><a href="#" class="btn btn-primary">Primary Button</a></li>
-                                    <li><a href="#" class="btn btn-secondary">Secondary Button</a></li>
-                                    <li><a href="#" class="btn btn-light">Light Button</a></li>
-                                    <li><a href="#" class="btn btn-success">Succcess Button</a></li>
-                                    <li><a href="#" class="btn btn-info">Info Button</a></li>
-                                    <li><a href="#" class="btn btn-warning">Warning Button</a></li>
-                                    <li><a href="#" class="btn btn-danger">Danger Button</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6 col-12">
-                                <ul class="list list-unstyled pl-0">
-                                    <li><a href="#" class="btn btn-primary"><i class="fas fa-download mr-2"></i> Download Now</a></li>
-                                    <li><a href="#" class="btn btn-secondary"><i class="fas fa-book mr-2"></i> View Docs</a></li>
-                                    <li><a href="#" class="btn btn-light"><i class="fas fa-arrow-alt-circle-right mr-2"></i> View Features</a></li>
-                                    <li><a href="#" class="btn btn-success"><i class="fas fa-code-branch mr-2"></i> Fork Now</a></li>
-                                    <li><a href="#" class="btn btn-info"><i class="fas fa-play-circle mr-2"></i> Find Out Now</a></li>
-                                    <li><a href="#" class="btn btn-warning"><i class="fas fa-bug mr-2"></i> Report Bugs</a></li>
-                                    <li><a href="#" class="btn btn-danger"><i class="fas fa-exclamation-circle mr-2"></i> Submit Issues</a></li>
-                                </ul>
-                            </div>
-                        </div><!--//row-->
-                        
-                        <h5>Progress Examples:</h5>
-                        <div class="my-4">
-	                        <div class="progress my-4">
-								<div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-							</div>
-							<div class="progress my-4">
-							    <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-							</div>
-							<div class="progress my-4">
-							    <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-							</div>
-							<div class="progress my-4">
-							    <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-							</div>
-                        </div>
-					</section><!--//section-->
-					
-					<section class="docs-section" id="item-1-4">
-						<h2 class="section-heading">Section Item 1.4</h2>
-						<p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo. Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin est. Vestibulum ultricies malesuada tempor.</p>
-						
-						
-						<h5>Pagination Example:</h5>
-						<nav aria-label="Page navigation example">
-						    <ul class="pagination pl-0">
-							    <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-							    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-							    <li class="page-item"><a class="page-link" href="#">2</a></li>
-							    <li class="page-item"><a class="page-link" href="#">3</a></li>
-							    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-						    </ul>
-						</nav>
-						
-						<p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo. Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin est. Vestibulum ultricies malesuada tempor.</p>
-						
-					</section><!--//section-->
-					<section class="docs-section" id="item-1-5">
-						<h2 class="section-heading">Section Item 1.5</h2>
-						<p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo. Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin est. Vestibulum ultricies malesuada tempor.</p>
-					</section><!--//section-->
-					<section class="docs-section" id="item-1-6">
-						<h2 class="section-heading">Section Item 1.6</h2>
-						<p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo. Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin est. Vestibulum ultricies malesuada tempor.</p>
-					</section><!--//section-->
-					
-			    </article>
-			    
-			    <article class="docs-article" id="section-2">
-				    <header class="docs-header">
-					    <h1 class="docs-heading">Examples</h1>
-					    <section class="docs-intro">
-						    <p>Here are some example usages</p>
-						</section><!--//docs-intro-->
-				    </header>
-				     <section class="docs-section" id="item-2-1">
-						<h2 class="section-heading">Create</h2>
-						<h5>Create instance to generate notes:</h5>
-						<pre><code class="language-js">const noteGen = new Note()</code></pre>
-						<br>
-						<h5>Create a new Note:</h5>
-						<pre><code class="language-js">// with createNote():
+            </header>
+            <section class="docs-section" id="item-1-1">
+              <h2 class="section-heading">Installation</h2>
+              <p>
+                Vivamus efficitur fringilla ullamcorper. Cras condimentum
+                condimentum mauris, vitae facilisis leo. Aliquam sagittis purus
+                nisi, at commodo augue convallis id.
+              </p>
+              <p>Code Example: <code>npm install &lt;package&gt;</code></p>
+              <h5>Unordered List Examples:</h5>
+              <ul>
+                <li>
+                  <strong class="mr-1">HTML5:</strong>
+                  <code>&lt;div id="foo"&gt;</code>
+                </li>
+                <li>
+                  <strong class="mr-1">CSS:</strong>
+                  <code>#foo { color: red }</code>
+                </li>
+                <li>
+                  <strong class="mr-1">JavaScript:</strong>
+                  <code>console.log(&#x27;#foo\bar&#x27;);</code>
+                </li>
+              </ul>
+              <h5>Ordered List Examples:</h5>
+              <ol>
+                <li>Download lorem ipsum dolor sit amet.</li>
+                <li>Click ipsum faucibus venenatis.</li>
+                <li>Configure fermentum malesuada nunc.</li>
+                <li>Deploy donec non ante libero.</li>
+              </ol>
+              <h5>Callout Examples:</h5>
+              <div class="callout-block callout-block-info">
+                <div class="content">
+                  <h4 class="callout-title">
+                    <span class="callout-icon-holder mr-1">
+                      <i class="fas fa-info-circle"></i> </span
+                    ><!--//icon-holder-->
+                    Note
+                  </h4>
+                  <p>
+                    Sed ut perspiciatis unde omnis iste natus error sit
+                    voluptatem accusantium <code>&lt;code&gt;</code> , Nemo enim
+                    ipsam voluptatem quia voluptas
+                    <a href="#">link example</a> sit aspernatur aut odit aut
+                    fugit.
+                  </p>
+                </div>
+                <!--//content-->
+              </div>
+              <!--//callout-block-->
+
+              <div class="callout-block callout-block-warning">
+                <div class="content">
+                  <h4 class="callout-title">
+                    <span class="callout-icon-holder mr-1">
+                      <i class="fas fa-bullhorn"></i> </span
+                    ><!--//icon-holder-->
+                    Warning
+                  </h4>
+                  <p>
+                    Nunc hendrerit odio quis dignissim efficitur. Proin ut
+                    finibus libero. Morbi posuere fringilla felis eget sagittis.
+                    Fusce sem orci, cursus in tortor
+                    <a href="#">link example</a> tellus vel diam viverra
+                    elementum.
+                  </p>
+                </div>
+                <!--//content-->
+              </div>
+              <!--//callout-block-->
+
+              <div class="callout-block callout-block-success">
+                <div class="content">
+                  <h4 class="callout-title">
+                    <span class="callout-icon-holder mr-1">
+                      <i class="fas fa-thumbs-up"></i> </span
+                    ><!--//icon-holder-->
+                    Tip
+                  </h4>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                    <a href="#">Link example</a> aenean commodo ligula eget
+                    dolor.
+                  </p>
+                </div>
+                <!--//content-->
+              </div>
+              <!--//callout-block-->
+
+              <div class="callout-block callout-block-danger mr-1">
+                <div class="content">
+                  <h4 class="callout-title">
+                    <span class="callout-icon-holder">
+                      <i class="fas fa-exclamation-triangle"></i> </span
+                    ><!--//icon-holder-->
+                    Danger
+                  </h4>
+                  <p>
+                    Morbi eget interdum sapien. Donec sed turpis sed nulla
+                    lacinia accumsan vitae ut tellus. Aenean vestibulum
+                    <a href="#">Link example</a> maximus ipsum vel dignissim.
+                    Morbi ornare elit sit amet massa feugiat, viverra dictum
+                    ipsum pellentesque.
+                  </p>
+                </div>
+                <!--//content-->
+              </div>
+              <!--//callout-block-->
+
+              <h5 class="mt-5">Alert Examples:</h5>
+              <div class="alert alert-primary" role="alert">
+                This is a primary alert—check it out!
+              </div>
+              <div class="alert alert-secondary" role="alert">
+                This is a secondary alert—check it out!
+              </div>
+              <div class="alert alert-success" role="alert">
+                This is a success alert—check it out!
+              </div>
+              <div class="alert alert-danger" role="alert">
+                This is a danger alert—check it out!
+              </div>
+              <div class="alert alert-warning" role="alert">
+                This is a warning alert—check it out!
+              </div>
+              <div class="alert alert-info" role="alert">
+                This is a info alert—check it out!
+              </div>
+              <div class="alert alert-light" role="alert">
+                This is a light alert—check it out!
+              </div>
+              <div class="alert alert-dark" role="alert">
+                This is a dark alert—check it out!
+              </div>
+            </section>
+            <!--//section-->
+
+            <section class="docs-section" id="item-1-2">
+              <h2 class="section-heading">Section Item 1.2</h2>
+              <p>
+                Vivamus efficitur fringilla ullamcorper. Cras condimentum
+                condimentum mauris, vitae facilisis leo. Aliquam sagittis purus
+                nisi, at commodo augue convallis id. Sed interdum turpis quis
+                felis bibendum imperdiet. Mauris pellentesque urna eu leo
+                gravida iaculis. In fringilla odio in felis ultricies porttitor.
+                Donec at purus libero. Vestibulum libero orci, commodo nec arcu
+                sit amet, commodo sollicitudin est. Vestibulum ultricies
+                malesuada tempor.
+              </p>
+              <h5>Image Lightbox Example:</h5>
+              <figure class="figure docs-figure py-3">
+                <a
+                  href="assets/images/features/appify-theme-projects-overview-lg.jpg"
+                  data-title="Image Lightbox Example"
+                  data-toggle="lightbox"
+                  ><img
+                    class="figure-img img-fluid shadow rounded"
+                    src="assets/images/features/appify-add-members.gif"
+                    alt=""
+                    style="width: 600px"
+                /></a>
+                <figcaption class="figure-caption mt-3">
+                  <i class="fas fa-info-circle mr-2"></i>Credit: the above
+                  screencast is taken from
+                  <a
+                    class="theme-link"
+                    href="https://themes.3rdwavemedia.com/bootstrap-templates/product/appify-bootstrap-4-admin-template-for-app-developers/"
+                    target="_blank"
+                    ><i class="fas fa-external-link-alt"></i>Appify theme</a
+                  >.
+                </figcaption>
+              </figure>
+
+              <h5>Custom Table:</h5>
+              <div class="table-responsive my-4">
+                <table class="table table-bordered">
+                  <tbody>
+                    <tr>
+                      <th class="theme-bg-light">
+                        <a class="theme-link" href="#">Option 1</a>
+                      </th>
+                      <td>
+                        Option 1 desc lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit.
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="theme-bg-light">
+                        <a class="theme-link" href="#">Option 2</a>
+                      </th>
+                      <td>
+                        Option 2 desc lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light">
+                        <a class="theme-link" href="#">Option 3</a>
+                      </th>
+                      <td>
+                        Option 3 desc lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light">
+                        <a class="theme-link" href="#">Option 4</a>
+                      </th>
+                      <td>
+                        Option 4 desc lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--//table-responsive-->
+              <h5>Stripped Table:</h5>
+              <div class="table-responsive my-4">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">First</th>
+                      <th scope="col">Last</th>
+                      <th scope="col">Handle</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--//table-responsive-->
+              <h5>Bordered Dark Table:</h5>
+              <div class="table-responsive my-4">
+                <table class="table table-bordered table-dark">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">First</th>
+                      <th scope="col">Last</th>
+                      <th scope="col">Handle</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--//table-responsive-->
+            </section>
+            <!--//section-->
+
+            <section class="docs-section" id="item-1-3">
+              <h2 class="section-heading">Section Item 1.3</h2>
+              <p>
+                Vivamus efficitur fringilla ullamcorper. Cras condimentum
+                condimentum mauris, vitae facilisis leo. Aliquam sagittis purus
+                nisi, at commodo augue convallis id. Sed interdum turpis quis
+                felis bibendum imperdiet. Mauris pellentesque urna eu leo
+                gravida iaculis. In fringilla odio in felis ultricies porttitor.
+                Donec at purus libero. Vestibulum libero orci, commodo nec arcu
+                sit amet, commodo sollicitudin est. Vestibulum ultricies
+                malesuada tempor.
+              </p>
+              <h5>Badges Examples:</h5>
+              <div class="my-4">
+                <span class="badge badge-primary">Primary</span>
+                <span class="badge badge-secondary">Secondary</span>
+                <span class="badge badge-success">Success</span>
+                <span class="badge badge-danger">Danger</span>
+                <span class="badge badge-warning">Warning</span>
+                <span class="badge badge-info">Info</span>
+                <span class="badge badge-light">Light</span>
+                <span class="badge badge-dark">Dark</span>
+              </div>
+              <h5>Button Examples:</h5>
+              <div class="row my-3">
+                <div class="col-md-6 col-12">
+                  <ul class="list list-unstyled pl-0">
+                    <li>
+                      <a href="#" class="btn btn-primary">Primary Button</a>
+                    </li>
+                    <li>
+                      <a href="#" class="btn btn-secondary">Secondary Button</a>
+                    </li>
+                    <li><a href="#" class="btn btn-light">Light Button</a></li>
+                    <li>
+                      <a href="#" class="btn btn-success">Succcess Button</a>
+                    </li>
+                    <li><a href="#" class="btn btn-info">Info Button</a></li>
+                    <li>
+                      <a href="#" class="btn btn-warning">Warning Button</a>
+                    </li>
+                    <li>
+                      <a href="#" class="btn btn-danger">Danger Button</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-6 col-12">
+                  <ul class="list list-unstyled pl-0">
+                    <li>
+                      <a href="#" class="btn btn-primary"
+                        ><i class="fas fa-download mr-2"></i> Download Now</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="btn btn-secondary"
+                        ><i class="fas fa-book mr-2"></i> View Docs</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="btn btn-light"
+                        ><i class="fas fa-arrow-alt-circle-right mr-2"></i> View
+                        Features</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="btn btn-success"
+                        ><i class="fas fa-code-branch mr-2"></i> Fork Now</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="btn btn-info"
+                        ><i class="fas fa-play-circle mr-2"></i> Find Out Now</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="btn btn-warning"
+                        ><i class="fas fa-bug mr-2"></i> Report Bugs</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="btn btn-danger"
+                        ><i class="fas fa-exclamation-circle mr-2"></i> Submit
+                        Issues</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <!--//row-->
+
+              <h5>Progress Examples:</h5>
+              <div class="my-4">
+                <div class="progress my-4">
+                  <div
+                    class="progress-bar bg-success"
+                    role="progressbar"
+                    style="width: 25%"
+                    aria-valuenow="25"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
+                <div class="progress my-4">
+                  <div
+                    class="progress-bar bg-info"
+                    role="progressbar"
+                    style="width: 50%"
+                    aria-valuenow="50"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
+                <div class="progress my-4">
+                  <div
+                    class="progress-bar bg-warning"
+                    role="progressbar"
+                    style="width: 75%"
+                    aria-valuenow="75"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
+                <div class="progress my-4">
+                  <div
+                    class="progress-bar bg-danger"
+                    role="progressbar"
+                    style="width: 100%"
+                    aria-valuenow="100"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
+              </div>
+            </section>
+            <!--//section-->
+
+            <section class="docs-section" id="item-1-4">
+              <h2 class="section-heading">Section Item 1.4</h2>
+              <p>
+                Vivamus efficitur fringilla ullamcorper. Cras condimentum
+                condimentum mauris, vitae facilisis leo. Aliquam sagittis purus
+                nisi, at commodo augue convallis id. Sed interdum turpis quis
+                felis bibendum imperdiet. Mauris pellentesque urna eu leo
+                gravida iaculis. In fringilla odio in felis ultricies porttitor.
+                Donec at purus libero. Vestibulum libero orci, commodo nec arcu
+                sit amet, commodo sollicitudin est. Vestibulum ultricies
+                malesuada tempor.
+              </p>
+
+              <h5>Pagination Example:</h5>
+              <nav aria-label="Page navigation example">
+                <ul class="pagination pl-0">
+                  <li class="page-item disabled">
+                    <a class="page-link" href="#">Previous</a>
+                  </li>
+                  <li class="page-item active">
+                    <a class="page-link" href="#">1</a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                  </li>
+                </ul>
+              </nav>
+
+              <p>
+                Vivamus efficitur fringilla ullamcorper. Cras condimentum
+                condimentum mauris, vitae facilisis leo. Aliquam sagittis purus
+                nisi, at commodo augue convallis id. Sed interdum turpis quis
+                felis bibendum imperdiet. Mauris pellentesque urna eu leo
+                gravida iaculis. In fringilla odio in felis ultricies porttitor.
+                Donec at purus libero. Vestibulum libero orci, commodo nec arcu
+                sit amet, commodo sollicitudin est. Vestibulum ultricies
+                malesuada tempor.
+              </p>
+            </section>
+            <!--//section-->
+            <section class="docs-section" id="item-1-5">
+              <h2 class="section-heading">Section Item 1.5</h2>
+              <p>
+                Vivamus efficitur fringilla ullamcorper. Cras condimentum
+                condimentum mauris, vitae facilisis leo. Aliquam sagittis purus
+                nisi, at commodo augue convallis id. Sed interdum turpis quis
+                felis bibendum imperdiet. Mauris pellentesque urna eu leo
+                gravida iaculis. In fringilla odio in felis ultricies porttitor.
+                Donec at purus libero. Vestibulum libero orci, commodo nec arcu
+                sit amet, commodo sollicitudin est. Vestibulum ultricies
+                malesuada tempor.
+              </p>
+            </section>
+            <!--//section-->
+            <section class="docs-section" id="item-1-6">
+              <h2 class="section-heading">Section Item 1.6</h2>
+              <p>
+                Vivamus efficitur fringilla ullamcorper. Cras condimentum
+                condimentum mauris, vitae facilisis leo. Aliquam sagittis purus
+                nisi, at commodo augue convallis id. Sed interdum turpis quis
+                felis bibendum imperdiet. Mauris pellentesque urna eu leo
+                gravida iaculis. In fringilla odio in felis ultricies porttitor.
+                Donec at purus libero. Vestibulum libero orci, commodo nec arcu
+                sit amet, commodo sollicitudin est. Vestibulum ultricies
+                malesuada tempor.
+              </p>
+            </section>
+            <!--//section-->
+          </article>
+
+          <article class="docs-article" id="section-2">
+            <header class="docs-header">
+              <h1 class="docs-heading">Examples</h1>
+              <section class="docs-intro">
+                <p>Here are some example usages</p>
+              </section>
+              <!--//docs-intro-->
+            </header>
+            <section class="docs-section" id="item-2-1">
+              <h2 class="section-heading">Create</h2>
+              <h5>Create instance to generate notes:</h5>
+              <pre><code class="language-js">const noteGen = new Note()</code></pre>
+              <br />
+              <h5>Create a new Note:</h5>
+              <pre><code class="language-js">// with createNote():
 const toast = noteGen.createNote().addText("hello")
 
 // or use templates:
 const toast = noteGen.makeToast("hello")
 
-/* the two options above achieve the same result */</code></pre> 
-					</section><!--//section-->
-					
-					<section class="docs-section" id="item-2-2">
-						<h2 class="section-heading">Display</h2>
-						<h5>Now let's take the toast we created above and display it on screen!</h5>
-						<ul>
-							<li><p>You can display the note on the viewport (attach to body):</p></li>
-							<div class="row">
-								<div class="col-6">
-								  <pre><code class="language-js">toast.display("top-center")</code></pre>
-								</div>
-								<div class="col my-auto">
-								  <button class="topCenter btn btn-secondary float-right">run</button>
-								</div>
-							</div>
-					  
-							<div class="row">
-								<div class="col-6">
-									<pre><code class="language-js">toast.display("top-right")</code></pre>
-								</div>
-								<div class="col my-auto">
-									<button class="topRight btn btn-secondary float-right">run</button>
-								</div>
-							</div>
-					  
-							  <div class="row">
-								<div class="col-6">
-								  <pre><code class="language-js">toast.display("mid-right")</code></pre>
-								</div>
-								<div class="col my-auto">
-								  <button class="midRight btn btn-secondary float-right">run</button>
-								</div>
-							  </div>
-					  
-							  <div class="row">
-								<div class="col-6">
-								  <pre><code class="language-js">toast.display("bot-right")</code></pre>
-								</div>
-								<div class="col my-auto">
-								  <button class="botRight btn btn-secondary float-right">run</button>
-								</div>
-							  </div>
-					  
-							  <div class="row">
-								<div class="col-6">
-								  <pre><code class="language-js">toast.display("bot-center")</code></pre>
-								</div>
-								<div class="col my-auto">
-								  <button class="botCenter btn btn-secondary float-right">run</button>
-								</div>
-							  </div>
-					  
-							  <div class="row">
-								<div class="col-6">
-								  <pre><code class="language-js">toast.display("bot-left")</code></pre>
-								</div>
-								<div class="col my-auto">
-								  <button class="botLeft btn btn-secondary float-right">run</button>
-								</div>
-							  </div>
-					  
-							  <div class="row">
-								<div class="col-6">
-								  <pre><code class="language-js">toast.display("mid-left")</code></pre>
-								</div>
-								<div class="col my-auto">
-								  <button class="midLeft btn btn-secondary float-right">run</button>
-								</div>
-							  </div>
-					  
-							  <div class="row">
-								<div class="col-6">
-								  <pre><code class="language-js">toast.display("top-left")</code></pre>
-								</div>
-								<div class="col my-auto">
-								  <button class="topLeft btn btn-secondary float-right">run</button>
-								</div>
-							  </div>
+/* the two options above achieve the same result */</code></pre>
+            </section>
+            <!--//section-->
 
-							<li>Or display the note relative to some element (attached to target element)</li>
-							<div class="box-wrapper">
-								<span id="target" class="box">TARGET</span>
-							</div>
+            <section class="docs-section" id="item-2-2">
+              <h2 class="section-heading">Display</h2>
+              <h5>
+                Now let's take the toast we created above and display it on
+                screen!
+              </h5>
+              <ul>
+                <li>
+                  <p>
+                    You can display the note on the viewport (attach to body):
+                  </p>
+                </li>
+                <div class="row">
+                  <div class="col-6">
+                    <pre><code class="language-js">toast.display("top-center")</code></pre>
+                  </div>
+                  <div class="col my-auto">
+                    <button class="topCenter btn btn-secondary float-right">
+                      run
+                    </button>
+                  </div>
+                </div>
 
-							<p>You can change the duration of display, and duration of zero means the
-								note won't fade out.</p>
+                <div class="row">
+                  <div class="col-6">
+                    <pre><code class="language-js">toast.display("top-right")</code></pre>
+                  </div>
+                  <div class="col my-auto">
+                    <button class="topRight btn btn-secondary float-right">
+                      run
+                    </button>
+                  </div>
+                </div>
 
-							<div class="row">
-								<div class="col-6">
-									<pre><code class="language-js">toast.display("top-center", target, {duration: 0})</code></pre>
-								</div>
-								<div class="col my-auto">
-									<button class="elem-topCenter btn btn-secondary float-right">
-									run
-									</button>
-								</div>
-							</div>
-						
-							<div class="row">
-								<div class="col-6">
-									<pre><code class="language-js">toast.display("mid-right", target)</code></pre>
-								</div>
-								<div class="col my-auto">
-									<button class="elem-midRight btn btn-secondary float-right">
-									run
-									</button>
-								</div>
-							</div>
+                <div class="row">
+                  <div class="col-6">
+                    <pre><code class="language-js">toast.display("mid-right")</code></pre>
+                  </div>
+                  <div class="col my-auto">
+                    <button class="midRight btn btn-secondary float-right">
+                      run
+                    </button>
+                  </div>
+                </div>
 
-							<div class="row">
-								<div class="col-6">
-									<pre><code class="language-js">toast.display("bot-center", target)</code></pre>
-								</div>
-								<div class="col my-auto">
-									<button class="elem-botCenter btn btn-secondary float-right">
-									run
-									</button>
-								</div>
-							</div>
+                <div class="row">
+                  <div class="col-6">
+                    <pre><code class="language-js">toast.display("bot-right")</code></pre>
+                  </div>
+                  <div class="col my-auto">
+                    <button class="botRight btn btn-secondary float-right">
+                      run
+                    </button>
+                  </div>
+                </div>
 
-							<div class="row">
-								<div class="col-6">
-									<pre><code class="language-js">toast.display("mid-left", target)</code></pre>
-								</div>
-								<div class="col my-auto">
-									<button class="elem-midLeft btn btn-secondary float-right">
-									run
-									</button>
-								</div>
-							</div>
+                <div class="row">
+                  <div class="col-6">
+                    <pre><code class="language-js">toast.display("bot-center")</code></pre>
+                  </div>
+                  <div class="col my-auto">
+                    <button class="botCenter btn btn-secondary float-right">
+                      run
+                    </button>
+                  </div>
+                </div>
 
-						</ul>
-					</section><!--//section-->
-					
-					<section class="docs-section" id="item-2-3">
-						<h2 class="section-heading">Modify</h2>
-						<h5>Let's modify notes!</h5>
-						Let's start with empty note:
-						<code class="js">const note = noteGen.createNote() </code>
-						Add text:
-						<code class="js">note.addText("What is your favorite color?")</code>
-						<button class="addText btn btn-secondary float-right">
-						display note
-						</button>
-						<ul>
-							<li> 
+                <div class="row">
+                  <div class="col-6">
+                    <pre><code class="language-js">toast.display("bot-left")</code></pre>
+                  </div>
+                  <div class="col my-auto">
+                    <button class="botLeft btn btn-secondary float-right">
+                      run
+                    </button>
+                  </div>
+                </div>
 
-							</li>
-						</ul>
-					</section><!--//section-->
-			    </article><!--//docs-article-->
-			    
-			    
-			    <article class="docs-article" id="section-3">
-				    <header class="docs-header">
-					    <h1 class="docs-heading">APIs</h1>
-					    <section class="docs-intro">
-						    <p>Section intro goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque finibus condimentum nisl id vulputate. Praesent aliquet varius eros interdum suscipit. Donec eu purus sed nibh convallis bibendum quis vitae turpis. Duis vestibulum diam lorem, vitae dapibus nibh facilisis a. Fusce in malesuada odio.</p>
-						</section><!--//docs-intro-->
-				    </header>
-				     <section class="docs-section" id="item-3-1">
-						<h2 class="section-heading">Section Item 3.1</h2>
-						<p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo. Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin est. Vestibulum ultricies malesuada tempor.</p>
-					</section><!--//section-->
-					
-					<section class="docs-section" id="item-3-2">
-						<h2 class="section-heading">Section Item 3.2</h2>
-						<p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo. Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin est. Vestibulum ultricies malesuada tempor.</p>
-					</section><!--//section-->
-					
-					<section class="docs-section" id="item-3-3">
-						<h2 class="section-heading">Section Item 3.3</h2>
-						<p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo. Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin est. Vestibulum ultricies malesuada tempor.</p>
-					</section><!--//section-->
-			    </article><!--//docs-article-->
+                <div class="row">
+                  <div class="col-6">
+                    <pre><code class="language-js">toast.display("mid-left")</code></pre>
+                  </div>
+                  <div class="col my-auto">
+                    <button class="midLeft btn btn-secondary float-right">
+                      run
+                    </button>
+                  </div>
+                </div>
 
-			    <footer class="footer">
-				    <div class="container text-center py-5">
-					    <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
-				        <small class="copyright">Designed with <i class="fas fa-heart" style="color: #fb866a;"></i> by <a class="theme-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
-				    </div>
-			    </footer>
-		    </div> 
-	    </div>
-    </div><!--//docs-wrapper-->
-    
-   
-       
-	<!-- Javascript -->   
-	<!-- load jquery  -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-	></script>
-       
+                <div class="row">
+                  <div class="col-6">
+                    <pre><code class="language-js">toast.display("top-left")</code></pre>
+                  </div>
+                  <div class="col my-auto">
+                    <button class="topLeft btn btn-secondary float-right">
+                      run
+                    </button>
+                  </div>
+                </div>
+
+                <li>
+                  Or display the note relative to some element (attached to
+                  target element)
+                </li>
+                <div class="box-wrapper">
+                  <span id="target" class="box">TARGET</span>
+                </div>
+
+                <p>
+                  You can change the duration of display, and duration of zero
+                  means the note won't fade out.
+                </p>
+
+                <div class="row">
+                  <div class="col-6">
+                    <pre><code class="language-js">toast.display("top-center", target, {duration: 0})</code></pre>
+                  </div>
+                  <div class="col my-auto">
+                    <button
+                      class="elem-topCenter btn btn-secondary float-right"
+                    >
+                      run
+                    </button>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-6">
+                    <pre><code class="language-js">toast.display("mid-right", target)</code></pre>
+                  </div>
+                  <div class="col my-auto">
+                    <button class="elem-midRight btn btn-secondary float-right">
+                      run
+                    </button>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-6">
+                    <pre><code class="language-js">toast.display("bot-center", target)</code></pre>
+                  </div>
+                  <div class="col my-auto">
+                    <button
+                      class="elem-botCenter btn btn-secondary float-right"
+                    >
+                      run
+                    </button>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-6">
+                    <pre><code class="language-js">toast.display("mid-left", target)</code></pre>
+                  </div>
+                  <div class="col my-auto">
+                    <button class="elem-midLeft btn btn-secondary float-right">
+                      run
+                    </button>
+                  </div>
+                </div>
+              </ul>
+            </section>
+            <!--//section-->
+
+            <section class="docs-section" id="item-2-3">
+              <h2 class="section-heading">Modify</h2>
+              <h5>Let's start with an empty note:</h5>
+              <pre><code class="language-js">const note = noteGen.createNote()</code></pre>
+              <br />
+              <h5>Add some text:</h5>
+              <div class="row">
+                <div class="col-6">
+                  <pre><code class="language-js"
+						>note.addText("What is your favorite color?")</code
+					  ></pre>
+                </div>
+                <div class="col my-auto">
+                  <button class="addText btn btn-secondary float-right">
+                    display note
+                  </button>
+                </div>
+              </div>
+              <br />
+
+              <h5>Add some buttons:</h5>
+              <div class="row">
+                <div class="col-6">
+                  <pre><code class="language-js"
+						>note.addButtons(["red", "blue", "green"])</code
+					  ></pre>
+                </div>
+                <div class="col my-auto">
+                  <button class="addButtons btn btn-secondary float-right">
+                    display note
+                  </button>
+                </div>
+              </div>
+
+              <ul>
+                <li></li>
+              </ul>
+            </section>
+            <!--//section-->
+          </article>
+          <!--//docs-article-->
+
+          <article class="docs-article" id="section-3">
+            <header class="docs-header">
+              <h1 class="docs-heading">APIs</h1>
+              <section class="docs-intro">
+                <p>
+                  Section intro goes here. Lorem ipsum dolor sit amet,
+                  consectetur adipiscing elit. Quisque finibus condimentum nisl
+                  id vulputate. Praesent aliquet varius eros interdum suscipit.
+                  Donec eu purus sed nibh convallis bibendum quis vitae turpis.
+                  Duis vestibulum diam lorem, vitae dapibus nibh facilisis a.
+                  Fusce in malesuada odio.
+                </p>
+              </section>
+              <!--//docs-intro-->
+            </header>
+            <section class="docs-section" id="item-3-1">
+              <h2 class="section-heading">Section Item 3.1</h2>
+              <p>
+                Vivamus efficitur fringilla ullamcorper. Cras condimentum
+                condimentum mauris, vitae facilisis leo. Aliquam sagittis purus
+                nisi, at commodo augue convallis id. Sed interdum turpis quis
+                felis bibendum imperdiet. Mauris pellentesque urna eu leo
+                gravida iaculis. In fringilla odio in felis ultricies porttitor.
+                Donec at purus libero. Vestibulum libero orci, commodo nec arcu
+                sit amet, commodo sollicitudin est. Vestibulum ultricies
+                malesuada tempor.
+              </p>
+            </section>
+            <!--//section-->
+
+            <section class="docs-section" id="item-3-2">
+              <h2 class="section-heading">Section Item 3.2</h2>
+              <p>
+                Vivamus efficitur fringilla ullamcorper. Cras condimentum
+                condimentum mauris, vitae facilisis leo. Aliquam sagittis purus
+                nisi, at commodo augue convallis id. Sed interdum turpis quis
+                felis bibendum imperdiet. Mauris pellentesque urna eu leo
+                gravida iaculis. In fringilla odio in felis ultricies porttitor.
+                Donec at purus libero. Vestibulum libero orci, commodo nec arcu
+                sit amet, commodo sollicitudin est. Vestibulum ultricies
+                malesuada tempor.
+              </p>
+            </section>
+            <!--//section-->
+
+            <section class="docs-section" id="item-3-3">
+              <h2 class="section-heading">Section Item 3.3</h2>
+              <p>
+                Vivamus efficitur fringilla ullamcorper. Cras condimentum
+                condimentum mauris, vitae facilisis leo. Aliquam sagittis purus
+                nisi, at commodo augue convallis id. Sed interdum turpis quis
+                felis bibendum imperdiet. Mauris pellentesque urna eu leo
+                gravida iaculis. In fringilla odio in felis ultricies porttitor.
+                Donec at purus libero. Vestibulum libero orci, commodo nec arcu
+                sit amet, commodo sollicitudin est. Vestibulum ultricies
+                malesuada tempor.
+              </p>
+            </section>
+            <!--//section-->
+          </article>
+          <!--//docs-article-->
+
+          <footer class="footer">
+            <div class="container text-center py-5">
+              <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+              <small class="copyright"
+                >Designed with
+                <i class="fas fa-heart" style="color: #fb866a"></i> by
+                <a
+                  class="theme-link"
+                  href="http://themes.3rdwavemedia.com"
+                  target="_blank"
+                  >Xiaoying Riley</a
+                >
+                for developers</small
+              >
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+    <!--//docs-wrapper-->
+
+    <!-- Javascript -->
+    <!-- load jquery  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <script src="assets/plugins/popper.min.js"></script>
-	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
-	
-	<!-- My notification library -->
-	<script type="text/javascript" src="Note.js"></script>
-	<!-- example usages -->
-	<script type="text/javascript" src="example.js"></script>
-    
-    
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- My notification library -->
+    <script type="text/javascript" src="Note.js"></script>
+    <!-- example usages -->
+    <script type="text/javascript" src="example.js"></script>
+
     <!-- Page Specific JS -->
-	<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/highlight.min.js"></script> -->
-	<script type="text/javascript" src="assets/plugins/prism/prism.js"></script>  
+    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/highlight.min.js"></script> -->
+    <script type="text/javascript" src="assets/plugins/prism/prism.js"></script>
     <script src="assets/plugins/jquery.scrollTo.min.js"></script>
-    <script src="assets/plugins/lightbox/dist/ekko-lightbox.min.js"></script> 
-    <script src="assets/js/docs.js"></script> 
-
-</body>
-</html> 
-
+    <script src="assets/plugins/lightbox/dist/ekko-lightbox.min.js"></script>
+    <script src="assets/js/docs.js"></script>
+  </body>
+</html>

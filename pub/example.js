@@ -14,7 +14,9 @@ $(".midLeft").click(() => toast.display("mid-left"));
 $(".topLeft").click(() => toast.display("top-left"));
 
 // toast.display("top-center", target, { duration: 0 });
-$(".elem-topCenter").click(() => toast.display("top-center", target, {duration:0}));
+$(".elem-topCenter").click(() =>
+  toast.display("top-center", target, { duration: 0 })
+);
 $(".elem-midRight").click(() => toast.display("mid-right", target));
 $(".elem-botCenter").click(() => toast.display("bot-center", target));
 $(".elem-midLeft").click(() => toast.display("mid-left", target));
@@ -30,12 +32,17 @@ $(".addButtons").click(() =>
   note2.display("bot-center", "body", { duration: 0 })
 );
 
+let result = note2.waitForResponse();
+result.then((res) => console.log(res));
+
 const note3 = noteGen
-.createNote()
+  .createNote()
   .addText("What is your favorite color?")
   .addButtons(["red", "blue", "green"])
   .removeButtons(["red", "blue"]);
-$(".removeButtons").click(() => note3.display("bot-center"));
+$(".removeButtons").click(() => note3.display("bot-center"), "body", {
+  duration: 0,
+});
 
 const note4 = noteGen
   .createNote()
@@ -43,7 +50,9 @@ const note4 = noteGen
   .addButtons(["red", "blue", "green"])
   .removeButtons(["red", "blue"])
   .removeText(0);
-$(".removeText").click(() => note4.display("bot-center"));
+$(".removeText").click(() => note4.display("bot-center"), "body", {
+  duration: 0,
+});
 
 // const note5 = noteGen
 //   .createNote()

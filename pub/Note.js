@@ -8,6 +8,7 @@
     this.texts = [];
     this.buttons = [];
     this.forms = [];
+    this.buttonClicked = "";
   }
 
   let notes = [];
@@ -29,6 +30,7 @@
         .append(document.createTextNode(text))
         .hide()
     );
+    newNote.content.attr("id", newNote._id);
     notes.push(newNote);
     return newNote;
   };
@@ -38,6 +40,7 @@
     newNote.addText(title);
     newNote.addButtons(buttonText);
     newNote.content.hide();
+    newNote.content.attr("id", newNote._id);
     notes.push(newNote);
     return newNote;
   };
@@ -47,6 +50,7 @@
     const newNote = new Note(
       $("<div class='default-note-wrapper'></div>").append(content)
     );
+    newNote.content.attr("id", newNote._id);
     notes.push(newNote);
     return newNote;
   };
@@ -86,8 +90,11 @@
   $("body").on("click", ".poll-button", (e) => _handleButtonClick(e.target));
 
   const _handleButtonClick = function (button) {
-    console.log(button.innerText);
     const content = $(button).parent().parent();
+    const note_id = content.attr("id");
+    // find note with this id, update its buttonClicked attribute
+    const note = notes.filter((n) => n._id === note_id)[0];
+    note.buttonClicked = button.innerText;
     content.fadeOut(function () {
       if (!content.parent() === document.body) {
         content.parent().remove();
@@ -134,6 +141,19 @@
       this.buttons.splice(this.buttons.indexOf(targets[0]), 1);
     });
     return this;
+  };
+
+  Note.prototype.waitForResponse = function () {
+    return new Promise((resolve, reject) => {
+      const note = this;
+      let id = window.setInterval(function () {
+        // check every 50 ms if a button is clicked
+        if (note.buttonClicked !== "") {
+          clearInterval(id);
+          resolve(note.buttonClicked);
+        }
+      }, 50);
+    });
   };
 
   /* =========== display note features ============ */
