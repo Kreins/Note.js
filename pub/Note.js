@@ -150,7 +150,9 @@
         // check every 50 ms if a button is clicked
         if (note.buttonClicked !== "") {
           clearInterval(id);
-          resolve(note.buttonClicked);
+          const buttonText = note.buttonClicked;
+          note.buttonClicked = "";
+          resolve(buttonText);
         }
       }, 50);
     });

@@ -26,29 +26,37 @@ $(".addText").click(() => note1.display("bot-center"));
 
 const note2 = noteGen
   .createNote()
-  .addText("What is your favorite color?")
-  .addButtons(["red", "blue", "green"]);
+  .addText("Change button color?")
+  .addButtons(["orange", "blue", "pink"]);
 $(".addButtons").click(() =>
   note2.display("bot-center", "body", { duration: 0 })
 );
 
 let result = note2.waitForResponse();
-result.then((res) => console.log(res));
+result.then((res) => {
+  console.log("New color:", res);
+  if (res === "blue") {
+    res = "lightblue";
+  }
+  $(".header")
+    .css("background-color", res)
+    .css("transition", "background-color 1s ease");
+});
 
 const note3 = noteGen
   .createNote()
-  .addText("What is your favorite color?")
-  .addButtons(["red", "blue", "green"])
-  .removeButtons(["red", "blue"]);
+  .addText("Change header color?")
+  .addButtons(["orange", "blue", "pink"])
+  .removeButtons(["orange", "blue"]);
 $(".removeButtons").click(() => note3.display("bot-center"), "body", {
   duration: 0,
 });
 
 const note4 = noteGen
   .createNote()
-  .addText("What is your favorite color?")
-  .addButtons(["red", "blue", "green"])
-  .removeButtons(["red", "blue"])
+  .addText("Change header color?")
+  .addButtons(["orange", "blue", "pink"])
+  .removeButtons(["orange", "blue"])
   .removeText(0);
 $(".removeText").click(() => note4.display("bot-center"), "body", {
   duration: 0,
