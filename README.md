@@ -36,13 +36,32 @@ const toast = noteGen.makeToast("hello")
 /* the two options above achieve the same result */
 ```
 
+<img src="assets/images/hello.png" alt="drawing" width="400"/>
+
 You can display the note you created on the viewport (attach to body):
 ```Javascript
 toast.display("top-center")
 ```
-Or display the note relative to some element (attached to target element)
+Or display the note relative to some element (attached to target element):
 ```Javascript
 toast.display("bot-center", target)
+```
+<img src="assets/images/hello_attached.png" alt="drawing" width="400"/>
+
+You can add/replace/remove text and buttons:
+```Javascript
+const note = noteGen
+	.createNote()
+	.addText("Change header color?")
+	.addButtons(["orange", "blue", "pink"])
+```
+<img src="assets/images/poll.png" alt="drawing" width="400"/>
+
+Wait for click:
+```Javascript
+let result = note.waitForResponse()
+result.then((res) => console.log(res))
+// logs out the text of the button clicked
 ```
 
 
