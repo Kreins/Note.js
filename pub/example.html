@@ -1011,12 +1011,153 @@ userResponse.then((res) => {
               <br />
               <h4>note.display(position, [target], [options])</h4>
               <div class="description">
-                <p>displays this note on screen.</p>
-                <h5>parameters</h5>
+                <p><i>Displays this note on screen.</i></p>
+                <h5>Parameters</h5>
                 <ul>
-                  <li>position:</li>
+                  <li>position: <i>String</i></li>
+                  <p>
+                    Specifies the position of the note relative to the target.
+                    The available positions are:
+                    <span class="highlight"
+                      >"top-left", "top-center", "top-right", "mid-left",
+                      "mid-right", "bot-left", "bot-center", "bot-right"</span
+                    >
+                  </p>
+                  <li>target (optional): <i>Object/String. </i></li>
+                  <p>default: <span class="highlight">"body"</span></p>
+                  <p>
+                    Specifies the target element the note attaches to. If the
+                    target is body, then target should take the string "body",
+                    or it could be omitted if the [options] parameter is empty.
+                    Otherwise, target takes an Element Object.
+                  </p>
+                  <li>options: <i>Object. </i></li>
+                  <p>
+                    default: <span class="highlight">{duration: 3000}</span>
+                  </p>
+                  <p>
+                    Object that contains optional note settings, currently only
+                    support changing the note's duration of display. Setting
+                    duration to 0 means the note will not fadeout unless an
+                    action(click) occurs.
+                  </p>
+                </ul>
+                <h5>Returns</h5>
+                <p>No return value</p>
+              </div>
+              <br />
+              <br />
+
+              <h4>note.addText(text)</h4>
+              <div class="description">
+                <p><i>Add a text node to the bottom of the note</i></p>
+                <h5>Parameters</h5>
+                <ul>
+                  <li>text: <i>String</i></li>
+                  The text to be added.
+                </ul>
+                <h5>Returns</h5>
+                <ul>
+                  <li>note: <i>Note</i></li>
+                  Updated note instance
                 </ul>
               </div>
+              <br />
+              <br />
+
+              <h4>note.replaceText(index, newText)</h4>
+              <div class="description">
+                <p><i>Replace a text node at this index</i></p>
+                <h5>Parameters</h5>
+                <ul>
+                  <li>index: <i>Number</i></li>
+                  Index of the text node to be replaced. The index refers to the
+                  order in which the text nodes were added. The top text note
+                  would have index of 0.
+                  <li>newText: <i>String</i></li>
+                  New text to replace with.
+                </ul>
+                <h5>Returns</h5>
+                <ul>
+                  <li>note: <i>Note</i></li>
+                  Updated note instance
+                </ul>
+              </div>
+              <br />
+              <br />
+
+              <h4>note.removeText(index)</h4>
+              <div class="description">
+                <p><i>Remove the text node at this index</i></p>
+                <h5>Parameters</h5>
+                <ul>
+                  <li>index: <i>Number</i></li>
+                  Index of the text node to be removed. The index refers to the
+                  order in which the text nodes were added. The top text note
+                  would have index of 0.
+                </ul>
+                <h5>Returns</h5>
+                <ul>
+                  <li>note: <i>Note</i></li>
+                  Updated note instance
+                </ul>
+              </div>
+              <br />
+              <br />
+
+              <h4>note.addButtons(buttonTexts)</h4>
+              <div class="description">
+                <p><i>Add buttons to the note.</i></p>
+                <h5>Parameters</h5>
+                <ul>
+                  <li>buttonTexts: <i>array of String</i></li>
+                  An array of the buttons' text.
+                </ul>
+                <h5>Returns</h5>
+                <ul>
+                  <li>note: <i>Note</i></li>
+                  Updated note instance
+                </ul>
+              </div>
+              <br />
+              <br />
+
+              <h4>note.replaceButton(index, newText)</h4>
+              <div class="description">
+                <p><i>Replace the button at this index.</i></p>
+                <h5>Parameters</h5>
+                <ul>
+                  <li>index: <i>Number</i></li>
+                  Index of button to be replaced.
+                  <li>newText: <i>String</i></li>
+                  The new button's text.
+                </ul>
+                <h5>Returns</h5>
+                <ul>
+                  <li>note: <i>Note</i></li>
+                  Updated note instance
+                </ul>
+              </div>
+              <br />
+              <br />
+
+              <h4>note.removeButtons(buttonTexts)</h4>
+              <div class="description">
+                <p><i>Remove buttons from this note</i></p>
+                <h5>Parameters</h5>
+                <ul>
+                  <li>buttonTexts: <i>array of String</i></li>
+                  For each String in this array, find and remove the button that
+                  contains this String.
+                </ul>
+                <h5>Returns</h5>
+                <ul>
+                  <li>note: <i>Note</i></li>
+                  Updated note instance
+                </ul>
+              </div>
+              <br />
+              <br />
             </section>
             <!--//section-->
 
