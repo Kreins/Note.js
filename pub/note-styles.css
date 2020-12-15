@@ -1,6 +1,6 @@
 /* ------------------- */
 .default-note-wrapper {
-  min-width: 200px;
+  min-width: 100px;
   max-width: 300px;
   padding: 10px;
   background-color: #e6faff;

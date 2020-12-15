@@ -719,7 +719,7 @@ const toast = noteGen.makeToast("hello")
                     <pre><code class="language-js">toast.display("top-center")</code></pre>
                   </div>
                   <div class="col my-auto">
-                    <button class="topCenter btn btn-secondary float-right">
+                    <button class="topCenter btn btn-light float-right">
                       run
                     </button>
                   </div>
@@ -730,7 +730,7 @@ const toast = noteGen.makeToast("hello")
                     <pre><code class="language-js">toast.display("top-right")</code></pre>
                   </div>
                   <div class="col my-auto">
-                    <button class="topRight btn btn-secondary float-right">
+                    <button class="topRight btn btn-light float-right">
                       run
                     </button>
                   </div>
@@ -741,7 +741,7 @@ const toast = noteGen.makeToast("hello")
                     <pre><code class="language-js">toast.display("mid-right")</code></pre>
                   </div>
                   <div class="col my-auto">
-                    <button class="midRight btn btn-secondary float-right">
+                    <button class="midRight btn btn-light float-right">
                       run
                     </button>
                   </div>
@@ -752,7 +752,7 @@ const toast = noteGen.makeToast("hello")
                     <pre><code class="language-js">toast.display("bot-right")</code></pre>
                   </div>
                   <div class="col my-auto">
-                    <button class="botRight btn btn-secondary float-right">
+                    <button class="botRight btn btn-light float-right">
                       run
                     </button>
                   </div>
@@ -763,7 +763,7 @@ const toast = noteGen.makeToast("hello")
                     <pre><code class="language-js">toast.display("bot-center")</code></pre>
                   </div>
                   <div class="col my-auto">
-                    <button class="botCenter btn btn-secondary float-right">
+                    <button class="botCenter btn btn-light float-right">
                       run
                     </button>
                   </div>
@@ -774,7 +774,7 @@ const toast = noteGen.makeToast("hello")
                     <pre><code class="language-js">toast.display("bot-left")</code></pre>
                   </div>
                   <div class="col my-auto">
-                    <button class="botLeft btn btn-secondary float-right">
+                    <button class="botLeft btn btn-light float-right">
                       run
                     </button>
                   </div>
@@ -785,7 +785,7 @@ const toast = noteGen.makeToast("hello")
                     <pre><code class="language-js">toast.display("mid-left")</code></pre>
                   </div>
                   <div class="col my-auto">
-                    <button class="midLeft btn btn-secondary float-right">
+                    <button class="midLeft btn btn-light float-right">
                       run
                     </button>
                   </div>
@@ -796,7 +796,7 @@ const toast = noteGen.makeToast("hello")
                     <pre><code class="language-js">toast.display("top-left")</code></pre>
                   </div>
                   <div class="col my-auto">
-                    <button class="topLeft btn btn-secondary float-right">
+                    <button class="topLeft btn btn-light float-right">
                       run
                     </button>
                   </div>
@@ -820,9 +820,7 @@ const toast = noteGen.makeToast("hello")
                     <pre><code class="language-js">toast.display("top-center", target, {duration: 0})</code></pre>
                   </div>
                   <div class="col my-auto">
-                    <button
-                      class="elem-topCenter btn btn-secondary float-right"
-                    >
+                    <button class="elem-topCenter btn btn-light float-right">
                       run
                     </button>
                   </div>
@@ -833,7 +831,7 @@ const toast = noteGen.makeToast("hello")
                     <pre><code class="language-js">toast.display("mid-right", target)</code></pre>
                   </div>
                   <div class="col my-auto">
-                    <button class="elem-midRight btn btn-secondary float-right">
+                    <button class="elem-midRight btn btn-light float-right">
                       run
                     </button>
                   </div>
@@ -844,9 +842,7 @@ const toast = noteGen.makeToast("hello")
                     <pre><code class="language-js">toast.display("bot-center", target)</code></pre>
                   </div>
                   <div class="col my-auto">
-                    <button
-                      class="elem-botCenter btn btn-secondary float-right"
-                    >
+                    <button class="elem-botCenter btn btn-light float-right">
                       run
                     </button>
                   </div>
@@ -857,7 +853,7 @@ const toast = noteGen.makeToast("hello")
                     <pre><code class="language-js">toast.display("mid-left", target)</code></pre>
                   </div>
                   <div class="col my-auto">
-                    <button class="elem-midLeft btn btn-secondary float-right">
+                    <button class="elem-midLeft btn btn-light float-right">
                       run
                     </button>
                   </div>
@@ -873,13 +869,13 @@ const toast = noteGen.makeToast("hello")
               <br />
               <h5>Add some text:</h5>
               <div class="row">
-                <div class="col-6">
+                <div class="col-7">
                   <pre><code class="language-js"
 						>note.addText("Change header color?")</code
 					  ></pre>
                 </div>
                 <div class="col my-auto">
-                  <button class="addText btn btn-secondary float-right">
+                  <button class="addText btn btn-light float-right">
                     display note
                   </button>
                 </div>
@@ -891,21 +887,53 @@ const toast = noteGen.makeToast("hello")
                 colors)
               </h5>
               <div class="row">
-                <div class="col-6">
+                <div class="col-7">
                   <pre><code class="language-js"
 						>note.addButtons(["orange", "blue", "pink"])</code
 					  ></pre>
                 </div>
                 <div class="col my-auto">
-                  <button class="addButtons btn btn-secondary float-right">
+                  <button class="addButtons btn btn-light float-right">
                     display note
                   </button>
                 </div>
               </div>
+              <br />
 
-              <ul>
-                <li></li>
-              </ul>
+              <h5>Remove some buttons:</h5>
+              <div class="row">
+                <div class="col-7">
+                  <pre><code class="language-js"
+						>note.removeButtons(["red, "blue"])</code
+					  ></pre>
+                </div>
+                <div class="col my-auto">
+                  <button class="removeButtons btn btn-light float-right">
+                    display note
+                  </button>
+                </div>
+              </div>
+              <br />
+
+              <h5>Replace the first text:</h5>
+              <div class="row">
+                <div class="col-7">
+                  <pre><code class="language-js"
+						>note..replaceText(0, "There is the only one option!")</code
+					  ></pre>
+                </div>
+                <div class="col my-auto">
+                  <button class="replaceText btn btn-light float-right">
+                    display note
+                  </button>
+                </div>
+              </div>
+              <br />
+
+              <h5>
+                For more modifying options, or information about how a click is
+                handled, please check out the APIs below
+              </h5>
             </section>
             <!--//section-->
           </article>

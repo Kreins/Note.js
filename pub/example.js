@@ -21,12 +21,12 @@ $(".elem-midRight").click(() => toast.display("mid-right", target));
 $(".elem-botCenter").click(() => toast.display("bot-center", target));
 $(".elem-midLeft").click(() => toast.display("mid-left", target));
 
-const note1 = noteGen.createNote().addText("What is your favorite color?");
+const note1 = noteGen.createNote().addText("Change header color?");
 $(".addText").click(() => note1.display("bot-center"));
 
 const note2 = noteGen
   .createNote()
-  .addText("Change button color?")
+  .addText("Change header color?")
   .addButtons(["orange", "blue", "pink"]);
 $(".addButtons").click(() =>
   note2.display("bot-center", "body", { duration: 0 })
@@ -48,8 +48,17 @@ const note3 = noteGen
   .addText("Change header color?")
   .addButtons(["orange", "blue", "pink"])
   .removeButtons(["orange", "blue"]);
-$(".removeButtons").click(() => note3.display("bot-center"), "body", {
-  duration: 0,
+$(".removeButtons").click(() =>
+  note3.display("bot-center", "body", {
+    duration: 0,
+  })
+);
+
+result = note3.waitForResponse();
+result.then((res) => {
+  $(".header")
+    .css("background-color", res)
+    .css("transition", "background-color 1s ease");
 });
 
 const note4 = noteGen
@@ -57,10 +66,12 @@ const note4 = noteGen
   .addText("Change header color?")
   .addButtons(["orange", "blue", "pink"])
   .removeButtons(["orange", "blue"])
-  .removeText(0);
-$(".removeText").click(() => note4.display("bot-center"), "body", {
-  duration: 0,
-});
+  .replaceText(0, "There is the only one option!");
+$(".replaceText").click(() =>
+  note4.display("bot-center", "body", {
+    duration: 0,
+  })
+);
 
 // const note5 = noteGen
 //   .createNote()
