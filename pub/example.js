@@ -73,8 +73,9 @@ $(".replaceText").click(() =>
   })
 );
 
-// const note5 = noteGen
-//   .createNote()
-//   .addText("Test Test Test")
-//   .addButtons(["yes", "no"]);
-// note5.display("top-center", "body", { duration: 0 });
+result = note4.waitForResponse();
+result.then((res) => {
+  $(".header")
+    .css("background-color", res)
+    .css("transition", "background-color 1s ease");
+});
