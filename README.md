@@ -2,7 +2,7 @@
 
 Note.js is a library that generates customizable and interactive notifications. The notifications ("notes") can take the form of toast messages, or they can attach themselves to different positions of any element. Notifications can be built easily with the provided components.
 
-## Link to Note.js landing page
+## Link to landing page
 https://secure-spire-81099.herokuapp.com/
 
 ## Getting Started
@@ -63,5 +63,6 @@ let result = note.waitForResponse()
 result.then((res) => console.log(res))
 // logs out the text of the button clicked
 ```
-
+## Link to APIs
+https://secure-spire-81099.herokuapp.com/#section-3
 
