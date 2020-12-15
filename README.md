@@ -6,11 +6,8 @@ Note.js is a library that generates customizable and interactive notifications. 
 https://secure-spire-81099.herokuapp.com/
 
 ## Getting Started
-make sure you have jQuery.
-download note.js and note-styles.css
-add note.js and note-styles.css to your HTML:
-<!-- library css-->
-<link rel="stylesheet" href="note-styles.css" />
+1. make sure you have jQuery.
+2. download note.js and note-styles.css
+3. add note.js and note-styles.css to your HTML:
 
-<!-- library js-->
-<script type="text/javascript" src="Note.js"></script>
+
