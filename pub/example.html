@@ -1,233 +1,787 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <title>Note.js</title>
+
+    <!-- Meta -->
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Library</title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- bootstrap-->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
-      crossorigin="anonymous"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="A notification library with modularized component"
     />
+    <meta name="author" content="Jun Da Wang" />
+    <link rel="shortcut icon" href="favicon.ico" />
 
     <!-- library css-->
     <link rel="stylesheet" href="note-styles.css" />
-    <!-- landing page css-->
-    <link rel="stylesheet" href="styles.css" />
 
-    <!-- load jquery  -->
-    <script
-      defer
-      src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-    ></script>
-    <!-- My notification library -->
-    <script defer type="text/javascript" src="Note.js"></script>
-    <!-- example usages -->
-    <script defer type="text/javascript" src="example.js"></script>
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- FontAwesome JS-->
+    <script defer src="assets/fontawesome/js/all.min.js"></script>
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="assets/plugins/prism/prism.css" />
+
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/theme.css" />
   </head>
-  <body>
-    <div class="container">
-      <h1>Note.js</h1>
-      <br />
-      Library Description:
-      <div class="card">
-        A library that generates customizable and interactive notifications. The
-        developer can choose where the notification message appears (top,
-        bottom, corner, etc.). The notifications can take the form of toast
-        messages, or they can attach themselves to different positions of any
-        element. The developer can create their notifications from scratch, or
-        use or modify the templates.
+
+  <body class="docs-page">
+    <header class="header fixed-top">
+      <div class="branding docs-branding">
+        <div class="container-fluid position-relative py-2">
+          <div class="docs-logo-wrapper">
+            <button
+              id="docs-sidebar-toggler"
+              class="docs-sidebar-toggler docs-sidebar-visible mr-2 d-xl-none"
+              type="button"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+            <div class="site-logo">
+              <a class="navbar-brand" href="index.html"
+                ><span class="logo-text"
+                  >Note<span class="text-alt">.js</span></span
+                ></a
+              >
+            </div>
+          </div>
+          <div
+            class="docs-top-utilities d-flex justify-content-end align-items-center"
+          >
+            <ul
+              class="social-list list-inline mx-md-3 mx-lg-5 mb-0 d-none d-lg-flex"
+            >
+              <li class="list-inline-item">
+                <a
+                  href="https://github.com/csc309-fall-2020/js-library-wangj716"
+                  ><i class="fab fa-github fa-fw"></i
+                ></a>
+              </li>
+            </ul>
+            <!--//social-list-->
+            <a href="note.zip" class="btn btn-primary d-none d-lg-flex" download
+              >Download</a
+            >
+          </div>
+          <!--//docs-top-utilities-->
+          <!--//docs-logo-wrapper-->
+          <div
+            class="docs-top-utilities d-flex justify-content-end align-items-center"
+          ></div>
+          <!--//docs-top-utilities-->
+        </div>
+        <!--//container-->
       </div>
-      <br />
-      <br />
+      <!--//branding-->
+    </header>
+    <!--//header-->
+
+    <div class="docs-wrapper">
+      <div id="docs-sidebar" class="docs-sidebar">
+        <div class="top-search-box d-lg-none p-3">
+          <form class="search-form">
+            <input
+              type="text"
+              placeholder="Search the docs..."
+              name="search"
+              class="form-control search-input"
+            />
+            <button type="submit" class="btn search-btn" value="Search">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+        </div>
+        <nav id="docs-nav" class="docs-nav navbar">
+          <ul class="section-items list-unstyled nav flex-column pb-3">
+            <li class="nav-item section-title">
+              <a class="nav-link scrollto active" href="#section-1"
+                ><span class="theme-icon-holder mr-2"
+                  ><i class="fas fa-map-signs"></i></span
+                >Getting Started</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link scrollto" href="#item-1-1">Installation</a>
+            </li>
+            <li class="nav-item section-title mt-3">
+              <a class="nav-link scrollto" href="#section-2"
+                ><span class="theme-icon-holder mr-2"
+                  ><i class="fas fa-arrow-down"></i></span
+                >Examples</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link scrollto" href="#item-2-1">Create</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link scrollto" href="#item-2-2">Display</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link scrollto" href="#item-2-3">Modify</a>
+            </li>
+            <li class="nav-item section-title mt-3">
+              <a class="nav-link scrollto" href="#section-3"
+                ><span class="theme-icon-holder mr-2"
+                  ><i class="fas fa-box"></i></span
+                >APIs</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link scrollto" href="#item-3-1">Constructor</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link scrollto" href="#item-3-2">Methods</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link scrollto" href="#item-3-3">Templates</a>
+            </li>
+          </ul>
+        </nav>
+        <!--//docs-nav-->
+      </div>
+      <!--//docs-sidebar-->
+      <div class="docs-content">
+        <div class="container">
+          <article class="docs-article" id="section-1">
+            <header class="docs-header">
+              <h1 class="docs-heading">Getting Started</h1>
+              <section class="docs-intro">
+                <h5>
+                  Note.js is a library that generates customizable and
+                  interactive notifications. The notifications ("notes") can
+                  take the form of toast messages, or they can attach themselves
+                  to different positions of any element. Notifications can be
+                  built easily with the provided components.
+                </h5>
+              </section>
+              <!--//docs-intro-->
+
+              <!-- <p>You can <a class="theme-link" href="https://github.com/highlightjs/highlight.js" target="_blank" rel="noopener noreferrer">embed your code snippets using highlight.js</a> It supports <a class="theme-link" href="https://highlightjs.org/static/demo/" target="_blank" rel="noopener noreferrer">185 languages and 89 styles</a>.</p>
+						<pre><code class="language-css">p { color: red }</code></pre> -->
+            </header>
+            <section class="docs-section" id="item-1-1">
+              <h2 class="section-heading">Installation</h2>
+              <ul>
+                <li>
+                  <strong class="mr-1">make sure you have jQuery.</strong>
+                </li>
+                <li>
+                  <strong class="mr-1"
+                    >download note.js and note-styles.css</strong
+                  >
+                </li>
+                <li>
+                  <strong class="mr-1"
+                    >add note.js and note-styles.css to your HTML:</strong
+                  >
+                  <pre><code class="language-markup">&lt;!-- library css-->
+&lt;link rel="stylesheet" href="note-styles.css" />
+
+&lt;!-- library js-->
+&lt;script type="text/javascript" src="Note.js">&lt;/script></code></pre>
+                </li>
+              </ul>
+            </section>
+            <!--//section-->
+          </article>
+
+          <article class="docs-article" id="section-2">
+            <header class="docs-header">
+              <h1 class="docs-heading">Examples</h1>
+              <section class="docs-intro">
+                <p>Here are some example usages</p>
+              </section>
+              <!--//docs-intro-->
+            </header>
+            <section class="docs-section" id="item-2-1">
+              <h2 class="section-heading">Create</h2>
+              <h5>Create instance to generate notes:</h5>
+              <pre><code class="language-js">const noteGen = new Note()</code></pre>
+              <br />
+              <h5>Create a new Note:</h5>
+              <pre><code class="language-js">// with createNote():
+const toast = noteGen.createNote().addText("hello")
+
+// or use templates:
+const toast = noteGen.makeToast("hello")
+
+/* the two options above achieve the same result */</code></pre>
+            </section>
+            <!--//section-->
+
+            <section class="docs-section" id="item-2-2">
+              <h2 class="section-heading">Display</h2>
+              <h5>
+                Now let's take the toast we created above and display it on
+                screen!
+              </h5>
+              <ul>
+                <li>
+                  <p>
+                    You can display the note on the viewport (attach to body):
+                  </p>
+                </li>
+                <div class="row">
+                  <div class="col-6">
+                    <pre><code class="language-js">toast.display("top-center")</code></pre>
+                  </div>
+                  <div class="col my-auto">
+                    <button class="topCenter btn btn-light float-right">
+                      run
+                    </button>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-6">
+                    <pre><code class="language-js">toast.display("top-right")</code></pre>
+                  </div>
+                  <div class="col my-auto">
+                    <button class="topRight btn btn-light float-right">
+                      run
+                    </button>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-6">
+                    <pre><code class="language-js">toast.display("mid-right")</code></pre>
+                  </div>
+                  <div class="col my-auto">
+                    <button class="midRight btn btn-light float-right">
+                      run
+                    </button>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-6">
+                    <pre><code class="language-js">toast.display("bot-right")</code></pre>
+                  </div>
+                  <div class="col my-auto">
+                    <button class="botRight btn btn-light float-right">
+                      run
+                    </button>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-6">
+                    <pre><code class="language-js">toast.display("bot-center")</code></pre>
+                  </div>
+                  <div class="col my-auto">
+                    <button class="botCenter btn btn-light float-right">
+                      run
+                    </button>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-6">
+                    <pre><code class="language-js">toast.display("bot-left")</code></pre>
+                  </div>
+                  <div class="col my-auto">
+                    <button class="botLeft btn btn-light float-right">
+                      run
+                    </button>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-6">
+                    <pre><code class="language-js">toast.display("mid-left")</code></pre>
+                  </div>
+                  <div class="col my-auto">
+                    <button class="midLeft btn btn-light float-right">
+                      run
+                    </button>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-6">
+                    <pre><code class="language-js">toast.display("top-left")</code></pre>
+                  </div>
+                  <div class="col my-auto">
+                    <button class="topLeft btn btn-light float-right">
+                      run
+                    </button>
+                  </div>
+                </div>
+
+                <li>
+                  Or display the note relative to some element (attached to
+                  target element)
+                </li>
+                <div class="box-wrapper">
+                  <span id="target" class="box">TARGET</span>
+                </div>
+
+                <p>
+                  You can change the duration of display, and duration of zero
+                  means the note won't fade out.
+                </p>
+
+                <div class="row">
+                  <div class="col-6">
+                    <pre><code class="language-js">toast.display("top-center", target, {duration: 0})</code></pre>
+                  </div>
+                  <div class="col my-auto">
+                    <button class="elem-topCenter btn btn-light float-right">
+                      run
+                    </button>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-6">
+                    <pre><code class="language-js">toast.display("mid-right", target)</code></pre>
+                  </div>
+                  <div class="col my-auto">
+                    <button class="elem-midRight btn btn-light float-right">
+                      run
+                    </button>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-6">
+                    <pre><code class="language-js">toast.display("bot-center", target)</code></pre>
+                  </div>
+                  <div class="col my-auto">
+                    <button class="elem-botCenter btn btn-light float-right">
+                      run
+                    </button>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-6">
+                    <pre><code class="language-js">toast.display("mid-left", target)</code></pre>
+                  </div>
+                  <div class="col my-auto">
+                    <button class="elem-midLeft btn btn-light float-right">
+                      run
+                    </button>
+                  </div>
+                </div>
+              </ul>
+            </section>
+            <!--//section-->
+
+            <section class="docs-section" id="item-2-3">
+              <h2 class="section-heading">Modify</h2>
+              <h5>Let's start with an empty note:</h5>
+              <pre><code class="language-js">const note = noteGen.createNote()</code></pre>
+              <br />
+              <h5>Add some text:</h5>
+              <div class="row">
+                <div class="col-7">
+                  <pre><code class="language-js"
+						>note.addText("Change header color?")</code
+					  ></pre>
+                </div>
+                <div class="col my-auto">
+                  <button class="addText btn btn-light float-right">
+                    display note
+                  </button>
+                </div>
+              </div>
+              <br />
+
+              <h5>
+                Add some buttons: (refresh the page if you want to try other
+                colors)
+              </h5>
+              <div class="row">
+                <div class="col-7">
+                  <pre><code class="language-js"
+						>note.addButtons(["orange", "blue", "pink"])
+						
+let userResponse = note.waitForResponse();
+// waitForResponse() returns a Promise, when the promise is resolved 
+// it returns the text of the clicked button.
+
+userResponse.then((res) => {
+	$(".header")
+	.css("background-color", res)
+	.css("transition", "background-color 1s ease");
+});</code></pre>
+                </div>
+                <div class="col my-auto">
+                  <button class="addButtons btn btn-light float-right">
+                    display note
+                  </button>
+                </div>
+              </div>
+
+              <div class="callout-block callout-block-info">
+                <div class="content">
+                  <h4 class="callout-title">
+                    <span class="callout-icon-holder mr-1">
+                      <i class="fas fa-info-circle"></i> </span
+                    ><!--//icon-holder-->
+                    Note
+                  </h4>
+                  <p>
+                    The note will disappear once a button is clicked. Remember
+                    you can always attach a note to another note if you want to
+                    display multiple polls. (See display() method)
+                  </p>
+                </div>
+                <!--//content-->
+              </div>
+              <!--//callout-block-->
+              <br />
+
+              <h5>Remove some buttons:</h5>
+              <div class="row">
+                <div class="col-7">
+                  <pre><code class="language-js"
+						>note.removeButtons(["red, "blue"])</code
+					  ></pre>
+                </div>
+                <div class="col my-auto">
+                  <button class="removeButtons btn btn-light float-right">
+                    display note
+                  </button>
+                </div>
+              </div>
+              <br />
+
+              <h5>Replace the first text:</h5>
+              <div class="row">
+                <div class="col-7">
+                  <pre><code class="language-js"
+						>note..replaceText(0, "There is the only one option!")</code
+					  ></pre>
+                </div>
+                <div class="col my-auto">
+                  <button class="replaceText btn btn-light float-right">
+                    display note
+                  </button>
+                </div>
+              </div>
+              <br />
+
+              <h5>Of course you could chain the above commands like so:</h5>
+              <div class="row">
+                <div class="col-7">
+                  <pre><code class="language-js"
+						>const note = noteGen
+	.createNote()
+	.addText("Change header color?")
+	.addButtons(["orange", "blue", "pink"])
+	.removeButtons(["orange", "blue"])
+	.replaceText(0, "There is the only one option!");</code
+					  ></pre>
+                </div>
+              </div>
+              <br />
+
+              <h5>
+                For more modifying options, or information about how a click is
+                handled, please check out the APIs below
+              </h5>
+            </section>
+            <!--//section-->
+          </article>
+          <!--//docs-article-->
+
+          <article class="docs-article" id="section-3">
+            <header class="docs-header">
+              <h1 class="docs-heading">APIs</h1>
+              <!--//docs-intro-->
+            </header>
+            <section class="docs-section" id="item-3-1">
+              <h2 class="section-heading">Constructor</h2>
+              <h5>
+                First use
+                <span class="highlight">new</span> keyword to create a note
+                generator:
+              </h5>
+              <pre><code class="language-js">const noteGen = new Note()</code></pre>
+              <br />
+              <h5>
+                To create a note instance, use
+                <span class="highlight">createNote()</span>
+                . The note created will be empty.
+              </h5>
+
+              <pre><code class="language-js">const note = noteGen.createNote()</code></pre>
+            </section>
+
+            <!--//section-->
+
+            <section class="docs-section" id="item-3-2">
+              <h2 class="section-heading">Methods</h2>
+              <br />
+              <h4>note.display(position, [target], [options])</h4>
+              <div class="description">
+                <p><i>Displays this note on screen.</i></p>
+                <h5>Parameters</h5>
+                <ul>
+                  <li>position: <i>String</i></li>
+                  <p>
+                    Specifies the position of the note relative to the target.
+                    The available positions are:
+                    <span class="highlight"
+                      >"top-left", "top-center", "top-right", "mid-left",
+                      "mid-right", "bot-left", "bot-center", "bot-right"</span
+                    >
+                  </p>
+                  <li>target (optional): <i>Object/String. </i></li>
+                  <p>default: <span class="highlight">"body"</span></p>
+                  <p>
+                    Specifies the target element the note attaches to. If the
+                    target is body, then target should take the string "body",
+                    or it could be omitted if the [options] parameter is empty.
+                    Otherwise, target takes an Element Object.
+                  </p>
+                  <li>options: <i>Object. </i></li>
+                  <p>
+                    default: <span class="highlight">{duration: 3000}</span>
+                  </p>
+                  <p>
+                    Object that contains optional note settings, currently only
+                    support changing the note's duration of display. Setting
+                    duration to 0 means the note will not fadeout unless an
+                    action(click) occurs.
+                  </p>
+                </ul>
+                <h5>Returns</h5>
+                <p>No return value</p>
+              </div>
+              <br />
+              <br />
+
+              <h4>note.addText(text)</h4>
+              <div class="description">
+                <p><i>Add a text node to the bottom of the note</i></p>
+                <h5>Parameters</h5>
+                <ul>
+                  <li>text: <i>String</i></li>
+                  The text to be added.
+                </ul>
+                <h5>Returns</h5>
+                <ul>
+                  <li>note: <i>Note</i></li>
+                  Updated note instance
+                </ul>
+              </div>
+              <br />
+              <br />
+
+              <h4>note.replaceText(index, newText)</h4>
+              <div class="description">
+                <p><i>Replace a text node at this index</i></p>
+                <h5>Parameters</h5>
+                <ul>
+                  <li>index: <i>Number</i></li>
+                  Index of the text node to be replaced. The index refers to the
+                  order in which the text nodes were added. The top text note
+                  would have index of 0.
+                  <li>newText: <i>String</i></li>
+                  New text to replace with.
+                </ul>
+                <h5>Returns</h5>
+                <ul>
+                  <li>note: <i>Note</i></li>
+                  Updated note instance
+                </ul>
+              </div>
+              <br />
+              <br />
+
+              <h4>note.removeText(index)</h4>
+              <div class="description">
+                <p><i>Remove the text node at this index</i></p>
+                <h5>Parameters</h5>
+                <ul>
+                  <li>index: <i>Number</i></li>
+                  Index of the text node to be removed. The index refers to the
+                  order in which the text nodes were added. The top text note
+                  would have index of 0.
+                </ul>
+                <h5>Returns</h5>
+                <ul>
+                  <li>note: <i>Note</i></li>
+                  Updated note instance
+                </ul>
+              </div>
+              <br />
+              <br />
+
+              <h4>note.addButtons(buttonTexts)</h4>
+              <div class="description">
+                <p><i>Add buttons to the note.</i></p>
+                <h5>Parameters</h5>
+                <ul>
+                  <li>buttonTexts: <i>array of String</i></li>
+                  An array of the buttons' text.
+                </ul>
+                <h5>Returns</h5>
+                <ul>
+                  <li>note: <i>Note</i></li>
+                  Updated note instance
+                </ul>
+              </div>
+              <br />
+              <br />
+
+              <h4>note.replaceButton(index, newText)</h4>
+              <div class="description">
+                <p><i>Replace the button at this index.</i></p>
+                <h5>Parameters</h5>
+                <ul>
+                  <li>index: <i>Number</i></li>
+                  Index of button to be replaced.
+                  <li>newText: <i>String</i></li>
+                  The new button's text.
+                </ul>
+                <h5>Returns</h5>
+                <ul>
+                  <li>note: <i>Note</i></li>
+                  Updated note instance
+                </ul>
+              </div>
+              <br />
+              <br />
+
+              <h4>note.removeButtons(buttonTexts)</h4>
+              <div class="description">
+                <p><i>Remove buttons from this note</i></p>
+                <h5>Parameters</h5>
+                <ul>
+                  <li>buttonTexts: <i>array of String</i></li>
+                  For each String in this array, find and remove the button that
+                  contains this String.
+                </ul>
+                <h5>Returns</h5>
+                <ul>
+                  <li>note: <i>Note</i></li>
+                  Updated note instance
+                </ul>
+              </div>
+              <br />
+              <br />
+
+              <h4>note.waitForResponse()</h4>
+              <div class="description">
+                <p><i>Waits for a button in this note to be clicked.</i></p>
+                <h5>Returns</h5>
+                <ul>
+                  Returns a
+                  <span class="highlight">Promise</span
+                  >. When a button is clicked, the Promise will resolve and the
+                  button's text will be returned.
+                </ul>
+                <h5>Example</h5>
+                <pre><code class="language-js">// create a note with two buttons: "yes", "no"
+const note = noteGen.createNote().addButtons(["yes", "no"])
+
+let result = note.waitForResponse()
+result.then((res) => console.log(res))
+// logs "yes" or "no" depending on the button clicked</code></pre>
+              </div>
+
+              <br />
+              <br />
+            </section>
+            <!--//section-->
+
+            <section class="docs-section" id="item-3-3">
+              <h2 class="section-heading">Templates</h2>
+              <br />
+              <h4>noteGen.makeToast(text)</h4>
+              <div class="description">
+                <p><i>Creates a note in the form of a toast message.</i></p>
+                <h5>Parameters</h5>
+                <ul>
+                  <li>texts: <i>String</i></li>
+                  Toast message
+                </ul>
+                <h5>Returns</h5>
+                <ul>
+                  <li>note: <i>Note</i></li>
+                  The created note instance
+                </ul>
+              </div>
+              <br />
+              <br />
+
+              <h4>noteGen.makePoll(title, buttonTexts)</h4>
+              <div class="description">
+                <p><i>Creates a note in the form of a poll.</i></p>
+                <h5>Parameters</h5>
+                <ul>
+                  <li>title: <i>String</i></li>
+                  Title of the poll.
+                  <li>buttonTexts: <i>array of String</i></li>
+                  Poll options.
+                </ul>
+                <h5>Returns</h5>
+                <ul>
+                  <li>note: <i>Note</i></li>
+                  The created note instance
+                </ul>
+              </div>
+              <br />
+              <br />
+            </section>
+            <!--//section-->
+          </article>
+          <!--//docs-article-->
+
+          <footer class="footer">
+            <div class="container text-center py-5">
+              <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+              <small class="copyright"
+                >Designed with
+                <i class="fas fa-heart" style="color: #fb866a"></i> by
+                <a
+                  class="theme-link"
+                  href="http://themes.3rdwavemedia.com"
+                  target="_blank"
+                  >Xiaoying Riley</a
+                >
+                for developers</small
+              >
+            </div>
+          </footer>
+        </div>
+      </div>
     </div>
-    <div class="container">
-      Create an instance to generate notes
-      <div class="card">
-        <code class="js">const noteGen = new Note()</code>
-      </div>
-      Create a new note with createNote() or using existing templates
-      <div class="card">
-        <code class="js"
-          >const note = noteGen.createNote().addText("hello")</code
-        >
-        or
-        <code class="js">const toast = noteGen.makeToast("hello") </code>
-      </div>
-      <br />
-      Display the note object you've created (let's take the "toast" above):
-      <br />
-      1) display the note on the viewport (attach to body):
-      <div class="card">
-        <div class="row">
-          <div class="col-3">
-            <code class="js">toast.display("top-center")</code>
-          </div>
-          <div class="col">
-            <button class="topCenter btn btn-secondary float-right">run</button>
-          </div>
-        </div>
+    <!--//docs-wrapper-->
 
-        <div class="row">
-          <div class="col-3">
-            <code class="js">toast.display("top-right")</code>
-          </div>
-          <div class="col">
-            <button class="topRight btn btn-secondary float-right">run</button>
-          </div>
-        </div>
+    <!-- Javascript -->
+    <!-- load jquery  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-        <div class="row">
-          <div class="col-3">
-            <code class="js">toast.display("mid-right")</code>
-          </div>
-          <div class="col">
-            <button class="midRight btn btn-secondary float-right">run</button>
-          </div>
-        </div>
+    <script src="assets/plugins/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
-        <div class="row">
-          <div class="col-3">
-            <code class="js">toast.display("bot-right")</code>
-          </div>
-          <div class="col">
-            <button class="botRight btn btn-secondary float-right">run</button>
-          </div>
-        </div>
+    <!-- My notification library -->
+    <script type="text/javascript" src="Note.js"></script>
+    <!-- example usages -->
+    <script type="text/javascript" src="example.js"></script>
 
-        <div class="row">
-          <div class="col-3">
-            <code class="js">toast.display("bot-center")</code>
-          </div>
-          <div class="col">
-            <button class="botCenter btn btn-secondary float-right">run</button>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-3">
-            <code class="js">toast.display("bot-left")</code>
-          </div>
-          <div class="col">
-            <button class="botLeft btn btn-secondary float-right">run</button>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-3">
-            <code class="js">toast.display("mid-left")</code>
-          </div>
-          <div class="col">
-            <button class="midLeft btn btn-secondary float-right">run</button>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-3">
-            <code class="js">toast.display("top-left")</code>
-          </div>
-          <div class="col">
-            <button class="topLeft btn btn-secondary float-right">run</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="box-wrapper">
-        <span id="target" class="box">TARGET</span>
-      </div>
-
-      2) display the note relative to some element (attached to target element)
-      <div class="card">
-        You can change the duration of display, and duration of zero means the
-        note won't fade out.
-        <code class="js"
-          >toast.display("top-center", target, {duration: 0})</code
-        >
-        <button class="elem-topCenter btn btn-secondary float-right">
-          run
-        </button>
-      </div>
-      <div class="card">
-        <div class="row">
-          <div class="col-4">
-            <code class="js">toast.display("mid-right", target)</code>
-          </div>
-          <div class="col">
-            <button class="elem-midRight btn btn-secondary float-right">
-              run
-            </button>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-4">
-            <code class="js">toast.display("bot-center", target)</code>
-          </div>
-          <div class="col">
-            <button class="elem-botCenter btn btn-secondary float-right">
-              run
-            </button>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-4">
-            <code class="js">toast.display("mid-left", target)</code>
-          </div>
-          <div class="col">
-            <button class="elem-midLeft btn btn-secondary float-right">
-              run
-            </button>
-          </div>
-        </div>
-      </div>
-      <br />
-      Add or Deleting Text/Buttons from your note
-      <div class="card">
-        Let's start with empty note:
-        <code class="js">const note = noteGen.createNote() </code>
-        Add text:
-        <code class="js">note.addText("What is your favorite color?")</code>
-        <button class="addText btn btn-secondary float-right">
-          display note
-        </button>
-      </div>
-      <div class="card">
-        Add buttons:
-        <code class="js">note.addButtons(3, ["red", "blue", "green"])</code>
-        <button class="addButtons btn btn-secondary float-right">
-          display note
-        </button>
-      </div>
-      <div class="card">
-        Of course instead you could also chain the above commands together like
-        this:
-        <pre><code class="js"
-          >const note = noteGen.createNote()
-                    .addText("What is your favorite color?")
-                    .addButtons(3, ["red', "blue", "green"])</code
-        ></pre>
-      </div>
-      <div class="card">
-        Remove buttons:
-        <code class="js">note.removeButtons(["red, "blue"])</code>
-        <button class="removeButtons btn btn-secondary float-right">
-          display note
-        </button>
-      </div>
-      <div class="card">
-        Remove text:
-        <code class="js"
-          >note.removeText(0) //0 is index of the first added text</code
-        >
-        <button class="removeText btn btn-secondary float-right">
-          display note
-        </button>
-      </div>
-    </div>
+    <!-- Page Specific JS -->
+    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/highlight.min.js"></script> -->
+    <script type="text/javascript" src="assets/plugins/prism/prism.js"></script>
+    <script src="assets/plugins/jquery.scrollTo.min.js"></script>
+    <script src="assets/plugins/lightbox/dist/ekko-lightbox.min.js"></script>
+    <script src="assets/js/docs.js"></script>
   </body>
 </html>
