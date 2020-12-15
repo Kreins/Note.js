@@ -889,8 +889,17 @@ const toast = noteGen.makeToast("hello")
               <div class="row">
                 <div class="col-7">
                   <pre><code class="language-js"
-						>note.addButtons(["orange", "blue", "pink"])</code
-					  ></pre>
+						>note.addButtons(["orange", "blue", "pink"])
+						
+let userResponse = note.waitForResponse();
+// waitForResponse() returns a Promise, when the promise is resolved 
+// it returns the text of the clicked button.
+
+userResponse.then((res) => {
+	$(".header")
+	.css("background-color", res)
+	.css("transition", "background-color 1s ease");
+});</code></pre>
                 </div>
                 <div class="col my-auto">
                   <button class="addButtons btn btn-light float-right">
@@ -898,6 +907,24 @@ const toast = noteGen.makeToast("hello")
                   </button>
                 </div>
               </div>
+
+              <div class="callout-block callout-block-info">
+                <div class="content">
+                  <h4 class="callout-title">
+                    <span class="callout-icon-holder mr-1">
+                      <i class="fas fa-info-circle"></i> </span
+                    ><!--//icon-holder-->
+                    Note
+                  </h4>
+                  <p>
+                    The note will disappear once a button is clicked. Remember
+                    you can always attach a note to another note if you want to
+                    display multiple polls. (See display() method)
+                  </p>
+                </div>
+                <!--//content-->
+              </div>
+              <!--//callout-block-->
               <br />
 
               <h5>Remove some buttons:</h5>
@@ -930,6 +957,21 @@ const toast = noteGen.makeToast("hello")
               </div>
               <br />
 
+              <h5>Of course you could chain the above commands like so:</h5>
+              <div class="row">
+                <div class="col-7">
+                  <pre><code class="language-js"
+						>const note = noteGen
+	.createNote()
+	.addText("Change header color?")
+	.addButtons(["orange", "blue", "pink"])
+	.removeButtons(["orange", "blue"])
+	.replaceText(0, "There is the only one option!");</code
+					  ></pre>
+                </div>
+              </div>
+              <br />
+
               <h5>
                 For more modifying options, or information about how a click is
                 handled, please check out the APIs below
@@ -942,45 +984,39 @@ const toast = noteGen.makeToast("hello")
           <article class="docs-article" id="section-3">
             <header class="docs-header">
               <h1 class="docs-heading">APIs</h1>
-              <section class="docs-intro">
-                <p>
-                  Section intro goes here. Lorem ipsum dolor sit amet,
-                  consectetur adipiscing elit. Quisque finibus condimentum nisl
-                  id vulputate. Praesent aliquet varius eros interdum suscipit.
-                  Donec eu purus sed nibh convallis bibendum quis vitae turpis.
-                  Duis vestibulum diam lorem, vitae dapibus nibh facilisis a.
-                  Fusce in malesuada odio.
-                </p>
-              </section>
               <!--//docs-intro-->
             </header>
             <section class="docs-section" id="item-3-1">
-              <h2 class="section-heading">Section Item 3.1</h2>
-              <p>
-                Vivamus efficitur fringilla ullamcorper. Cras condimentum
-                condimentum mauris, vitae facilisis leo. Aliquam sagittis purus
-                nisi, at commodo augue convallis id. Sed interdum turpis quis
-                felis bibendum imperdiet. Mauris pellentesque urna eu leo
-                gravida iaculis. In fringilla odio in felis ultricies porttitor.
-                Donec at purus libero. Vestibulum libero orci, commodo nec arcu
-                sit amet, commodo sollicitudin est. Vestibulum ultricies
-                malesuada tempor.
-              </p>
+              <h2 class="section-heading">Constructor</h2>
+              <h5>
+                First use
+                <span class="highlight">new</span> keyword to create a note
+                generator:
+              </h5>
+              <pre><code class="language-js">const noteGen = new Note()</code></pre>
+              <br />
+              <h5>
+                To create a note instance, use
+                <span class="highlight">createNote()</span>
+                . The note created will be empty.
+              </h5>
+
+              <pre><code class="language-js">const note = noteGen.createNote()</code></pre>
             </section>
+
             <!--//section-->
 
             <section class="docs-section" id="item-3-2">
-              <h2 class="section-heading">Section Item 3.2</h2>
-              <p>
-                Vivamus efficitur fringilla ullamcorper. Cras condimentum
-                condimentum mauris, vitae facilisis leo. Aliquam sagittis purus
-                nisi, at commodo augue convallis id. Sed interdum turpis quis
-                felis bibendum imperdiet. Mauris pellentesque urna eu leo
-                gravida iaculis. In fringilla odio in felis ultricies porttitor.
-                Donec at purus libero. Vestibulum libero orci, commodo nec arcu
-                sit amet, commodo sollicitudin est. Vestibulum ultricies
-                malesuada tempor.
-              </p>
+              <h2 class="section-heading">Methods</h2>
+              <br />
+              <h4>note.display(position, [target], [options])</h4>
+              <div class="description">
+                <p>displays this note on screen.</p>
+                <h5>parameters</h5>
+                <ul>
+                  <li>position:</li>
+                </ul>
+              </div>
             </section>
             <!--//section-->
 

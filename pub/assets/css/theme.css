@@ -9596,3 +9596,12 @@ a.theme-link:hover {
   border: 2px solid black;
   font-size: 40px;
 }
+
+.highlight {
+  color: orange;
+}
+
+.description {
+  padding-top: 1em;
+  padding-left: 3em;
+}
